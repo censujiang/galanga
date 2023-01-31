@@ -48,14 +48,25 @@ var localCookie = {
     }
 };
 
-//获取具体的url查询参数的值
-function getQueryString(name) {
-    var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
-    if (result == null || result.length < 1) {
-        return "";
-    }
-    return result[1];
-}
+var url = {
+    getQuery: function (name) {
+        var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+        if (result == null || result.length < 1) {
+            return "";
+        }
+        return result[1];
+    },
+    getHash: function (name) {
+        var result = window.location.hash.match(new RegExp("[\#\&]" + name + "=([^\&]+)", "i"));
+        if (result == null || result.length < 1) {
+            return "";
+        }
+        return result[1];
+    },
+    getPath: function () {
+        return window.location.pathname;
+    },
+};
 
 // 检查输入的值是否为空
 function checkNull(val) {
@@ -69,9 +80,27 @@ function checkNull(val) {
         return false;
     }
 }
+//获取字符串的字节数
+function strLength(str) {
+    var count = 0; //初始化字节数递加变量并获取字符串参数的字符个数
+    if (str) { //如果存在字符串，则执行
+        var len = str.length;
+        for (var i = 0; i < len; i++) { //遍历字符串，枚举每个字符
+            if (str.charCodeAt(i) > 255) { //字符编码大于255，说明是双字节字符(即是中文)
+                count += 2; //则累加2个
+            }
+            else {
+                count++; //否则递加一次
+            }
+        }
+        return count; //返回字节数
+    }
+    else {
+        return 0; //如果参数为空，则返回0个
+    }
+}
 
-//引入子模块
 //导出自己的名字
 var name = 'galanga';
 
-export { checkNull, getQueryString, localCookie, name };
+export { checkNull, localCookie, name, strLength, url };

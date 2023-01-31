@@ -1,1 +1,5 @@
-export declare function getQueryString(name: string): string;
+export declare const url: {
+    getQuery(name: string): string;
+    getHash(name: string): string;
+    getPath(): string;
+};

@@ -1,5 +1,4 @@
-import { localCookie } from "./cookie";
-import { getQueryString } from "./url";
-import { checkNull } from "./string";
 export declare const name = "galanga";
-export { localCookie, getQueryString, checkNull };
+export { localCookie } from "./cookie";
+export { url } from "./url";
+export { checkNull, strLength } from "./string";
