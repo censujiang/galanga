@@ -22,7 +22,7 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "censujiang",
-  "license": "MIT",
+  "license": "Apache License 2.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/censujiang/galanga.git"
