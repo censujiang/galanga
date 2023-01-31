@@ -1,7 +1,7 @@
 // rollup.config.js
 // commonjs
 var common = require('./rollup.js');
-var uglify = require('rollup-plugin-uglify');
+var uglify = require('rollup-plugin-uglify').uglify;
 
 var prod = process.env.NODE_ENV === 'production';
 

@@ -2,7 +2,7 @@
 // umd
 var nodeResolve = require('rollup-plugin-node-resolve');
 var commonjs = require('rollup-plugin-commonjs');
-var uglify = require('rollup-plugin-uglify');
+var uglify = require('rollup-plugin-uglify').uglify;
 
 var common = require('./rollup.js');
 
