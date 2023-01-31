@@ -33,6 +33,7 @@
   },
   "files": [
     "/dist",
+    "/src",
     "*.d.ts"
   ],
   "engines": {
