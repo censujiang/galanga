@@ -1,2 +1,5 @@
-export declare function greeter(person: string): string;
-export declare const name = "base";
+import { localCookie } from "./cookie";
+import { getQueryString } from "./url";
+import { checkNull } from "./string";
+export declare const name = "galanga";
+export { localCookie, getQueryString, checkNull };

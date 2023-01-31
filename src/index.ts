@@ -1,18 +1,10 @@
-import { B, yan } from './test';
+//引入子模块
+import { localCookie } from "./cookie";
+import { getQueryString } from "./url";
+import { checkNull } from "./string";
 
-import yan2 from './test';
+//导出自己的名字
+export const name = 'galanga';
 
-console.log(yan);
-console.log(yan2);
-
-const a = 1 + 1;
-const b = a;
-console.log(a);
-console.log(b);
-console.log(B);
-
-export function greeter(person: string): string {
-    return 'Hello, ' + person;
-}
-
-export const name = 'base';
+//导出所有子模块
+export { localCookie, getQueryString, checkNull };

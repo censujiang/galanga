@@ -9,67 +9,76 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
-
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
-
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return extendStatics(d, b);
+//操作cookie的方法
+var localCookie = {
+    getItem: function (sKey) {
+        return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+    },
+    setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+        if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
+            return false;
+        }
+        var sExpires = "";
+        if (vEnd) {
+            switch (vEnd.constructor) {
+                case Number:
+                    sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
+                    break;
+                case String:
+                    sExpires = "; expires=" + vEnd;
+                    break;
+                case Date:
+                    sExpires = "; expires=" + vEnd.toUTCString();
+                    break;
+            }
+        }
+        document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
+    },
+    removeItem: function (sKey, sPath, sDomain) {
+        if (!sKey || !this.hasItem(sKey)) {
+            return false;
+        }
+        document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "");
+    },
+    hasItem: function (sKey) {
+        return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+    },
+    keys: /* optional method: you can safely remove it! */ function () {
+        var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
+        for (var nIdx = 0; nIdx < aKeys.length; nIdx++) {
+            aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]);
+        }
+        return aKeys;
+    }
 };
 
-function __extends(d, b) {
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+//获取具体的url查询参数的值
+function getQueryString(name) {
+    var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+    if (result == null || result.length < 1) {
+        return "";
+    }
+    return result[1];
 }
 
-var yan = 'yan';
-var yan2 = 'yan2';
-var A = /** @class */ (function () {
-    function A() {
+// 检查输入的值是否为空
+function checkNull(val) {
+    if (val == null || val == undefined || val == '') {
+        return true;
     }
-    A.prototype.aaa = function () {
-        console.log('122');
-    };
-    return A;
-}());
-var B = /** @class */ (function (_super) {
-    __extends(B, _super);
-    function B() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    else if (Array.isArray(val) && val.length === 0) {
+        return true;
     }
-    B.prototype.bbb = function () {
-        console.log('122');
-    };
-    return B;
-}(A));
-
-console.log(yan);
-console.log(yan2);
-var a = 1 + 1;
-var b = a;
-console.log(a);
-console.log(b);
-console.log(B);
-function greeter(person) {
-    return 'Hello, ' + person;
+    else {
+        return false;
+    }
 }
-var name = 'base';
 
-exports.greeter = greeter;
+//引入子模块
+//导出自己的名字
+var name = 'galanga';
+
 exports.name = name;
+exports.localCookie = localCookie;
+exports.getQueryString = getQueryString;
+exports.checkNull = checkNull;
