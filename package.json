@@ -1,6 +1,6 @@
 {
   "name": "galanga",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "JS common function library",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "test": "npm run lint && nyc mocha",
-    "release": "npm run build && git commit -am %npm_package_version% && git tag %npm_package_version% && git push && git push --tags",
+    "release": "npm run build && git commit -am %npm_package_version% && git tag %npm_package_version% && git push && git push --tags && node ./scripts/publish.js",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "build": "npm run clean && npm run build:self && npm run build:self.min && npm run build:esm && npm run build:esm.min && npm run build:aio && npm run build:aio.min",
@@ -58,6 +58,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "0.34.1",
     "rollup-plugin-uglify": "6.0.4",
+    "shelljs": "^0.8.5",
     "source-map-support": "0.5.21",
     "ts-node": "10.9.1",
     "tslib": "2.5.0",
