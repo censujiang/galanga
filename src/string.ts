@@ -1,16 +1,16 @@
 // 检查输入的值是否为空
 export function checkNull(val: any) {
-	if (val == null || val == undefined || val == '') {
-		return true;
-	} else if (Array.isArray(val) && val.length === 0) {
-		return true;
-	} else {
-		return false;
-	}
+  if (val == null || val == undefined || val == '') {
+    return true;
+  } else if (Array.isArray(val) && val.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 //获取字符串的字节数
-export function strLength(str: string) { 
+export function strLength(str: string) {
   let count = 0;  //初始化字节数递加变量并获取字符串参数的字符个数
   if (str) {  //如果存在字符串，则执行
     let len = str.length;
