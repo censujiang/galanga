@@ -1,36 +1,38 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
+    'env': {
+        'browser': true,
+        'es6': true,
+        'node': true,
+        'commonjs': true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended"
+    'extends': [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended'
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "sourceType": "module"
+    'parser': '@typescript-eslint/parser',
+    'parserOptions': {
+        'experimentalObjectRestSpread': true,
+        'sourceType': 'module'
     },
-    "plugins": ["@typescript-eslint"],
-    "rules": {
-        "indent": [
-            "error",
-            2
+    'plugins': ['@typescript-eslint'],
+    'rules': {
+        'indent': [
+            'error',
+            4
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
+        'linebreak-style': [
+            'error',
+            'unix'
         ],
-        "quotes": [
-            "error",
-            "single"
+        'quotes': [
+            'error',
+            'single'
         ],
-        "semi": [
-            "error",
-            "always"
+        'semi': [
+            'error',
+            'always'
         ],
-        "no-console": "off",
-        "max-classes-per-file": ["error", 2],
+        'no-console': 'off',
+        'max-classes-per-file': ['error', 2],
     }
 };

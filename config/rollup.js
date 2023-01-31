@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 var typescript = require('rollup-plugin-typescript2');
 
 var pkg = require('../package.json');
@@ -14,11 +15,11 @@ var banner =
 `;
 
 function getCompiler(opt) {
-	opt = opt || {
-		tsconfigOverride: { compilerOptions: { module: 'ES2015' } }
-	}
+    opt = opt || {
+        tsconfigOverride: { compilerOptions: { module: 'ES2015' } }
+    };
 
-	return typescript(opt);
+    return typescript(opt);
 }
 
 exports.name = 'galanga';
