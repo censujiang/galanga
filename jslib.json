@@ -1,0 +1,11 @@
+{
+    "name": "galanga",
+    "npmname": "galanga",
+    "umdname": "galanga",
+    "username": "censujiang",
+    "type": "ts",
+    "module": "umd,esm,commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.6.0"
+}
