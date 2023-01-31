@@ -8,8 +8,8 @@ var banner =
 `/*!
  * ${pkg.name} ${version} (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
- * Copyright 2017-${(new Date).getFullYear()} censujiang. All Rights Reserved
- * Licensed under MIT (https://github.com/censujiang/galanga/blob/master/LICENSE)
+ * Copyright 2014-${(new Date).getFullYear()} censujiang. All Rights Reserved
+ * Licensed under Appache (https://github.com/censujiang/galanga/blob/master/LICENSE)
  */
 `;
 

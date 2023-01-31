@@ -1,8 +1,8 @@
 /*!
  * galanga 0.0.1 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
- * Copyright 2017-2023 censujiang. All Rights Reserved
- * Licensed under MIT (https://github.com/censujiang/galanga/blob/master/LICENSE)
+ * Copyright 2014-2023 censujiang. All Rights Reserved
+ * Licensed under Appache (https://github.com/censujiang/galanga/blob/master/LICENSE)
  */
 
 //操作cookie的方法
@@ -74,4 +74,4 @@ function checkNull(val) {
 //导出自己的名字
 var name = 'galanga';
 
-export { name, localCookie, getQueryString, checkNull };
+export { checkNull, getQueryString, localCookie, name };

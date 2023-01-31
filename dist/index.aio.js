@@ -1,15 +1,15 @@
 /*!
  * galanga 0.0.1 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
- * Copyright 2017-2023 censujiang. All Rights Reserved
- * Licensed under MIT (https://github.com/censujiang/galanga/blob/master/LICENSE)
+ * Copyright 2014-2023 censujiang. All Rights Reserved
+ * Licensed under Appache (https://github.com/censujiang/galanga/blob/master/LICENSE)
  */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.galanga = {})));
-}(this, (function (exports) { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.galanga = {}));
+})(this, (function (exports) { 'use strict';
 
   //操作cookie的方法
   var localCookie = {
@@ -80,11 +80,9 @@
   //导出自己的名字
   var name = 'galanga';
 
-  exports.name = name;
-  exports.localCookie = localCookie;
-  exports.getQueryString = getQueryString;
   exports.checkNull = checkNull;
+  exports.getQueryString = getQueryString;
+  exports.localCookie = localCookie;
+  exports.name = name;
 
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+}));
