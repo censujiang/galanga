@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "test": "npm run lint && nyc mocha",
-    "release": "npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
+    "release": "npm run build && git commit -am %npm_package_version% && git tag %npm_package_version% && git push && git push --tags",
     "publish": "npm run release && npm publish",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
