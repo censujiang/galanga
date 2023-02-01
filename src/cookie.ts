@@ -32,5 +32,11 @@ export const localCookie = {
     const aKeys = document.cookie.replace(/((?:^|\s*;)[^]+)(?=;|$)|^\s*|\s*(?:[^;]*)?(?:|$)/g, '').split(/\s*(?:[^;]*)?;\s*/);
     for (let nIdx = 0; nIdx < aKeys.length; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
     return aKeys;
+  },
+  clear: function () {
+    const keys = this.keys();
+    for (let i = 0; i < keys.length; i++) {
+      this.removeItem(keys[i]);
+    }
   }
 };

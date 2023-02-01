@@ -1,11 +1,4 @@
-# [galanga](https://github.com/censujiang/galanga)
-[![](https://img.shields.io/badge/Powered%20by-jslib%20base-brightgreen.svg)](https://github.com/yanhaijing/jslib-base)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/censujiang/galanga/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/censujiang/galanga.svg?branch=master)](https://travis-ci.org/censujiang/galanga)
-[![Coveralls](https://img.shields.io/coveralls/censujiang/galanga.svg)](https://coveralls.io/github/censujiang/galanga)
-[![npm](https://img.shields.io/badge/npm-0.1.0-orange.svg)](https://www.npmjs.com/package/galanga)
-[![NPM downloads](http://img.shields.io/npm/dm/galanga.svg?style=flat-square)](http://www.npmtrends.com/galanga)
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/censujiang/galanga.svg)](http://isitmaintained.com/project/censujiang/galanga "Percentage of issues still open")
+# [山奈Galanga](https://github.com/censujiang/galanga)
 
 最好用的 `JS|TS` 第三方库脚手架
 
@@ -32,11 +25,9 @@
 .
 ├── demo 使用demo
 ├── dist 编译产出代码
-├── doc 项目文档
+├── docs 项目文档
 ├── src 源代码目录
 ├── test 单元测试
-├── CHANGELOG.md 变更日志
-└── TODO.md 计划功能
 ```
 
 ## :rocket: 使用者指南
@@ -74,7 +65,7 @@ requirejs(['node_modules/galanga/dist/index.aio.js'], function (base) {
 ```
 
 ## :bookmark_tabs: 文档
-[API](./doc/api.md)
+[API](https://galanga.censujiang.com)
 
 ## :kissing_heart: 贡献者指南
 首次运行需要先安装依赖
@@ -114,7 +105,7 @@ $ npm publish
 [contributors](https://github.com/censujiang/galanga/graphs/contributors)
 
 ## :gear: 更新日志
-[CHANGELOG.md](./CHANGELOG.md)
+[CHANGELOG.md](./docs/guide/changelog.md)
 
 ## :airplane: 计划列表
-[TODO.md](./TODO.md)
+[TODO.md](./docs/guide/todo.md)
