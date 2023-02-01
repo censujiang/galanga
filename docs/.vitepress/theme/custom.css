@@ -1,0 +1,20 @@
+:root{
+  --vp-c-brand: #ee4866;
+  --vp-c-brand-light: #f7a1b5;
+  --vp-c-brand-lighter: #fbc8d5;
+  --vp-c-brand-dark: #b81d3a;
+  --vp-c-brand-darker: #8c1a2f;
+}
+
+.dark{
+  --vp-c-bg: #000000;
+  --vp-c-bg-elv: #1a1a1a;
+  --vp-c-bg-elv-up: #2a2a2a;
+  --vp-c-bg-elv-down: #0a0a0a;
+  --vp-c-bg-elv-mute: #1a1a1a;
+  --vp-c-bg-soft: #1a1a1a;
+  --vp-c-bg-soft-up: #2a2a2a;
+  --vp-c-bg-soft-down: #0a0a0a;
+  --vp-c-bg-soft-mute: #1a1a1a;
+  --vp-c-bg-alt: #2a2a2a;
+}
