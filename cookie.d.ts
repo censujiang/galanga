@@ -4,4 +4,5 @@ export declare const localCookie: {
     removeItem: (sKey: any, sPath: any, sDomain: any) => boolean;
     hasItem: (sKey: any) => boolean;
     keys: () => string[];
+    clear: () => void;
 };
