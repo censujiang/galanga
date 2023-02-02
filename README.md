@@ -1,12 +1,11 @@
 # [山奈Galanga](https://github.com/censujiang/galanga)
 
-最好用的 `JS|TS` 第三方库脚手架
+好用的 `JS|TS` 常用函数库
 
 ## :star: 特性
 
-- 支持ES6+或TypeScript编写源码，编译生成生产代码
+- 使用ES6+和TypeScript编写源码，编译生成生产代码
 - 多环境支持（支持浏览器原生，支持AMD，CMD，支持Webpack，Rollup，fis等，支持Node）
-- 集成[jsmini](https://github.com/jsmini)
 
 > 注意: 如果不同时使用 `export` 与 `export default` 可打开 `legacy模式`，`legacy模式` 下的模块系统可以兼容 `ie6-8`，见rollup配置文件
 

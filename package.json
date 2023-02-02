@@ -27,7 +27,9 @@
     "type": "git",
     "url": "git://github.com/censujiang/galanga.git"
   },
-  "homepage": "https://galanga.censujiang.com",
+  "homepage": {
+    "url": "https://galanga.censujiang.com"
+  },
   "bugs": {
     "url": "https://github.com/censujiang/galanga/issues"
   },
