@@ -104,7 +104,7 @@ $ npm publish
 [contributors](https://github.com/censujiang/galanga/graphs/contributors)
 
 ## :gear: 更新日志
-[CHANGELOG.md](./docs/guide/changelog.md)
+[CHANGELOG.md](./markdown/guide/changelog.md)
 
 ## :airplane: 计划列表
-[TODO.md](./docs/guide/todo.md)
+[TODO.md](./markdown/guide/todo.md)

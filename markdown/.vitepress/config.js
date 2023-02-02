@@ -8,6 +8,7 @@ export default {
   description: '山奈Galanga是一个开源的JS函数库',
   cleanUrls: true,
   lastUpdated: true,
+  outDir: '../docs',
   themeConfig: {
     siteTitle: 'Galanga',
     nav: [
