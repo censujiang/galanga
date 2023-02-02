@@ -1,5 +1,5 @@
 /*!
- * galanga 0.0.10 (https://github.com/censujiang/galanga)
+ * galanga 0.0.11 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
