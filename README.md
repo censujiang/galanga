@@ -1,13 +1,14 @@
 # [山奈Galanga](https://github.com/censujiang/galanga)
 
-好用的 `JS|TS` 常用函数库
+开源好用的 `JS|TS` 常用函数库
+
+[官方文档](https://galanga.censujiang.com) | [中国镜像](https://galanga.censujiang.cn)
 
 ## :star: 特性
 
 - 使用ES6+和TypeScript编写源码，编译生成生产代码
 - 多环境支持（支持浏览器原生，支持AMD，CMD，支持Webpack，Rollup，fis等，支持Node）
-
-> 注意: 如果不同时使用 `export` 与 `export default` 可打开 `legacy模式`，`legacy模式` 下的模块系统可以兼容 `ie6-8`，见rollup配置文件
+- 无依赖，体积小巧
 
 ## :pill: 兼容性
 单元测试保证支持如下环境：
@@ -22,11 +23,14 @@
 
 ```
 .
+├── config 打包配置文件
 ├── demo 使用demo
 ├── dist 编译产出代码
-├── docs 项目文档
+├── docs 项目文档站点
+├── scripts 打包脚本
 ├── src 源代码目录
 ├── test 单元测试
+├── wiki 项目文档源代码
 ```
 
 ## :rocket: 使用者指南
@@ -63,8 +67,7 @@ requirejs(['node_modules/galanga/dist/index.aio.js'], function (base) {
 <script src="node_modules/galanga/dist/index.aio.js"></script>
 ```
 
-## :bookmark_tabs: 文档
-[API](https://galanga.censujiang.com)
+更多安装及使用方法请查看[INSTALL.md](./wiki/guide/install.md)
 
 ## :kissing_heart: 贡献者指南
 首次运行需要先安装依赖
@@ -104,7 +107,7 @@ $ npm publish
 [contributors](https://github.com/censujiang/galanga/graphs/contributors)
 
 ## :gear: 更新日志
-[CHANGELOG.md](./markdown/guide/changelog.md)
+[CHANGELOG.md](./wiki/guide/changelog.md)
 
 ## :airplane: 计划列表
-[TODO.md](./markdown/guide/todo.md)
+[TODO.md](./wiki/guide/todo.md)

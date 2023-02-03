@@ -90,8 +90,8 @@ typings/
 
 # vuepress build output
 .vuepress/dist
-docs/.vitepress/dist
-docs/.vitepress/cache
+wiki/.vitepress/dist
+wiki/.vitepress/cache
 
 # Serverless directories
 .serverless/

@@ -20,9 +20,9 @@
     "build:aio": "rollup -c config/rollup.config.aio.js",
     "build:aio.min": "cross-env NODE_ENV=production npm run build:aio",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "docs:dev": "vitepress dev markdown",
-    "docs:build": "vitepress build markdown",
-    "docs:preview": "vitepress preview markdown"
+    "docs:dev": "vitepress dev wiki",
+    "docs:build": "vitepress build wiki",
+    "docs:preview": "vitepress preview wiki"
   },
   "author": "censujiang",
   "license": "Apache License 2.0",
