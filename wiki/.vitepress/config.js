@@ -35,7 +35,8 @@ export default {
         {
           text: '项目信息',
           items: [
-            { text: '计划', link: '/guide/todo' },
+            { text: '贡献指南', link: '/guide/contribute' },
+            { text: '项目计划', link: '/guide/todo' },
             { text: '更新日志', link: '/guide/changelog' },
           ]
         }
@@ -48,7 +49,7 @@ export default {
       ]
     },
     editLink: {
-      pattern: 'https://github.com/censujiang/galanga/edit/master/docs/:path',
+      pattern: 'https://github.com/censujiang/galanga/edit/master/wiki/:path',
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/censujiang/galanga' },
