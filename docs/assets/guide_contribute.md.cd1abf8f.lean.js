@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as e,d as n}from"./app.49dd9eec.js";const u=JSON.parse('{"title":"贡献指南","description":"","frontmatter":{},"headers":[],"relativePath":"guide/contribute.md","lastUpdated":1675424060000}'),l={name:"guide/contribute.md"},p=n("",12),t=[p];function o(c,r,i,d,C,h){return e(),a("div",null,t)}const b=s(l,[["render",o]]);export{u as __pageData,b as default};

@@ -1,5 +1,5 @@
 /*!
- * galanga 0.0.15 (https://github.com/censujiang/galanga)
+ * galanga 0.0.16 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -111,11 +111,23 @@
           return 0; //如果参数为空，则返回0个
       }
   }
+  //自动转换字节的单位
+  function formatBytes(bytes) {
+      if (bytes === 0)
+          return '0 B';
+      var k = 1024;
+      var sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+      var i = Math.floor(Math.log(bytes) / Math.log(k));
+      var size = parseFloat((bytes / Math.pow(k, i)).toFixed(1));
+      var unit = sizes[i];
+      return "".concat(size, " ").concat(unit);
+  }
 
   //导出自己的名字
   var name = 'galanga';
 
   exports.checkNull = checkNull;
+  exports.formatBytes = formatBytes;
   exports.localCookie = localCookie;
   exports.name = name;
   exports.strLength = strLength;
