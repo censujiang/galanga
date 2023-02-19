@@ -26,3 +26,17 @@ export function strLength(str: string) {
     return 0;  //如果参数为空，则返回0个
   }
 }
+
+//自动转换字节的单位
+export function formatBytes(bytes: number) {
+  if (bytes === 0) return '0 B';
+
+  const k: number = 1024;
+  const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  const size = parseFloat((bytes / Math.pow(k, i)).toFixed(1));
+  const unit = sizes[i];
+
+  return `${size} ${unit}`;
+}

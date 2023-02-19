@@ -7,7 +7,7 @@
 ## 导入
 
 ```js
-import { checkNull , strLength } from 'galanga'
+import { checkNull , strLength , formatBytes } from 'galanga'
 ```
 
 ## 使用
@@ -26,4 +26,12 @@ checkNull(name)
 
 ```js
 strLength(name)
+```
+
+### 格式化字节
+
+将字节（单位为B）格式化为 `KB`、`MB`、`GB` 等。
+
+```js
+formatBytes(1024)
 ```
