@@ -1,6 +1,6 @@
 {
   "name": "galanga",
-  "version": "0.0.16",
+  "version": "0.0.16l",
   "description": "JS common function library",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -20,7 +20,7 @@
     "build:aio": "rollup -c config/rollup.config.aio.js",
     "build:aio.min": "cross-env NODE_ENV=production npm run build:aio",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "docs:dev": "vitepress dev wiki",
+    "docs:dev": "vitepress dev wiki --host",
     "docs:build": "vitepress build wiki",
     "docs:preview": "vitepress preview wiki"
   },
@@ -67,7 +67,7 @@
     "ts-node": "10.9.1",
     "tslib": "2.5.0",
     "typescript": "4.9.5",
-    "vitepress": "^1.0.0-alpha.45",
+    "vitepress": "^1.0.0-alpha.60",
     "vue": "^3.2.47"
   },
   "dependencies": {}
