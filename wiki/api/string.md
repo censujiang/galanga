@@ -32,6 +32,14 @@ strLength(name)
 
 将字节（单位为B）格式化为 `KB`、`MB`、`GB` 等。
 
+输入参数：
+
+- `bytes`：字节数
+
+- `decimals`：保留小数位数，默认为 `1`
+
+- `unit`：单位，可选值为 `B`、`KB`、`MB`、`GB`、`TB`、`PB`、`EB`、`ZB`、`YB`，默认为 `B`
+
 ```js
-formatBytes(1024)
+formatBytes(1024,1,'B')
 ```
