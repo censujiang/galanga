@@ -1,5 +1,5 @@
 /*!
- * galanga 0.0.17 (https://github.com/censujiang/galanga)
+ * galanga 0.0.18 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -107,16 +107,22 @@ function strLength(str) {
         return 0; //如果参数为空，则返回0个
     }
 }
-//自动转换字节的单位，会有三个参数输入到此函数，分别是字节数，保留小数位数（默认为1），输入的单位（默认为B）
-function formatBytes(bytes, decimals, unit) {
-    if (decimals === void 0) { decimals = 1; }
+//自动转换字节的单位，会有两个参数输入到此函数，分别是数量，和一个json对象，对象中有三个属性，分别是保留的小数位数（默认为1），输入的字节是哪种单位（默认为B），输出的字节是哪种单位（默认为auto）
+//需要根据输入的字节单位和数量，计算出输出的字节数：如果设置了输出的字节单位是auto，则需要根据字节数自动计算出输出的字节单位并输出字节数。如果在设置了输出的字节单位为具体的某个单位，则根据输入的字节单位和数量，计算出输出的字节数。
+function formatBytes(bytes, _a) {
+    var _b = _a === void 0 ? {} : _a, _c = _b.decimals, decimals = _c === void 0 ? 1 : _c, _d = _b.from, from = _d === void 0 ? 'B' : _d, _e = _b.to, to = _e === void 0 ? 'auto' : _e;
     if (bytes === 0)
-        return '0 B'; //如果字节数为0，则返回0 B
-    var k = 1024; //定义1024
-    var dm = decimals < 0 ? 0 : decimals; //定义小数位数
-    var sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']; //定义单位数组
-    var i = Math.floor(Math.log(bytes) / Math.log(k)); //获取当前字节数对应的单位数组下标
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]; //返回转换后的字节数
+        return '0 Bytes';
+    var k = 1024;
+    var dm = decimals < 0 ? 0 : decimals;
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    var i = from === 'B' ? Math.floor(Math.log(bytes) / Math.log(k)) : sizes.indexOf(from);
+    if (to === 'auto') {
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    }
+    else {
+        return parseFloat((bytes / Math.pow(k, sizes.indexOf(to))).toFixed(dm)) + ' ' + to;
+    }
 }
 
 //导出自己的名字

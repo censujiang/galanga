@@ -36,10 +36,19 @@ strLength(name)
 
 - `bytes`：字节数
 
-- `decimals`：保留小数位数，默认为 `1`
+- 一个json对象，有以下内容：
 
-- `unit`：单位，可选值为 `B`、`KB`、`MB`、`GB`、`TB`、`PB`、`EB`、`ZB`、`YB`，默认为 `B`
+  - `decimals`：保留的小数位数，默认为1
+
+  - `from`：输入的字节单位，默认为B
+
+  - `to`：输出的字节单位，默认为KB
 
 ```js
-formatBytes(1024,1,'B')
+const json = {
+  decimals: 1,
+  from: 'B',
+  to: 'KB'
+}
+formatBytes(1024,json)
 ```

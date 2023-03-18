@@ -1,3 +1,7 @@
 export declare function checkNull(val: any): boolean;
 export declare function strLength(str: string): number;
-export declare function formatBytes(bytes: number, decimals?: number, unit?: string): string;
+export declare function formatBytes(bytes: number, { decimals, from, to }?: {
+    decimals?: number;
+    from?: string;
+    to?: string;
+}): string;
