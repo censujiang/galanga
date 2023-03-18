@@ -36,7 +36,7 @@ strLength(name)
 
 - `bytes`：字节数
 
-- 一个json对象，有以下内容：
+- 一个json对象（可选），有以下内容：
 
   - `decimals`：保留的小数位数，默认为1
 
