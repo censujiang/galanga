@@ -1,5 +1,5 @@
 /*!
- * galanga 0.0.19 (https://github.com/censujiang/galanga)
+ * galanga 0.0.20 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -139,11 +139,45 @@ function formatBytes(bytes, _a) {
         }
     }
 }
+//检查密码强度的函数，会有两个参数输入到此函数，分别是密码，和一个json对象，对象中有几个属性，分别是密码的最小长度（默认为8），密码的最大长度（默认为16），密码中必须包含的字符类型（默认为数字、大小写字母、特殊字符），密码中必须包含的字符类型的最小数量（默认为1），密码中必须包含的字符类型的最大数量（默认为3），密码中必须包含的字符类型的最小数量（默认为2），密码中必须包含的字符类型的最大数量（默认为4）
+//首先根据设置的密码的最小长度和密码的最大长度，判断密码的长度是否符合要求
+//然后根据设置的密码中必须包含的字符类型，判断密码中是否包含了所有的字符类型
+//最后根据设置的密码中必须包含的字符类型的最小数量和密码中必须包含的字符类型的最大数量，判断密码中是否包含了所有的字符类型的最小数量和最大数量
+function checkPassword(password, _a) {
+    var _b = _a === void 0 ? {} : _a, _c = _b.minLength, minLength = _c === void 0 ? 8 : _c, _d = _b.maxLength, maxLength = _d === void 0 ? 16 : _d, 
+    //字符类型：数字、小写字母、大写字母、特殊字符
+    _e = _b.types, 
+    //字符类型：数字、小写字母、大写字母、特殊字符
+    types = _e === void 0 ? ['number', 'lowercase', 'uppercase', 'special'] : _e, _f = _b.minTypes, minTypes = _f === void 0 ? 2 : _f, _g = _b.maxTypes, maxTypes = _g === void 0 ? 4 : _g;
+    //判断密码的长度是否符合要求
+    if (password.length < minLength || password.length > maxLength) {
+        return false;
+    }
+    //判断密码中是否包含了所有的字符类型
+    var typesCount = 0;
+    if (types.indexOf('number') > -1 && /\d/.test(password)) {
+        typesCount++;
+    }
+    if (types.indexOf('lowercase') > -1 && /[a-z]/.test(password)) {
+        typesCount++;
+    }
+    if (types.indexOf('uppercase') > -1 && /[A-Z]/.test(password)) {
+        typesCount++;
+    }
+    if (types.indexOf('special') > -1 && /[~!@#$%^&*()_+`\-={}:";'<>?,.\/]/.test(password)) {
+        typesCount++;
+    }
+    if (typesCount < minTypes || typesCount > maxTypes) {
+        return false;
+    }
+    return true;
+}
 
 //导出自己的名字
 var name = 'galanga';
 
 exports.checkNull = checkNull;
+exports.checkPassword = checkPassword;
 exports.formatBytes = formatBytes;
 exports.localCookie = localCookie;
 exports.name = name;

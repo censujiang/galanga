@@ -101,3 +101,59 @@ galanga.formatBytes(1024,json)
 ```
 
 :::
+
+## `checkPassword`
+
+### 介绍
+
+检查密码强度的函数，如果符合要求，则返回 `true`，否则返回 `false`。
+
+### 导入
+
+```js
+import { checkPassword } from 'galanga'
+```
+
+### 使用
+
+输入参数：
+
+- `password`：密码
+
+- 一个json对象（可选），有以下内容：
+
+  - `minLength`：密码最小长度，默认为8
+
+  - `maxLength`：密码最大长度，默认为16
+
+  - `types`：字符类型，分别为数字、小写字母、大写字母、特殊字符，默认为`['number', 'lowercase', 'uppercase', 'special'],`
+
+  - `minTypes`：最少包含的字符类型，默认为2
+
+  - `maxTypes`：最多包含的字符类型，默认为4
+
+::: code-group
+
+```js [NPM]
+const json = {
+  minLength: 8,
+  maxLength: 16,
+  types: ['number', 'lowercase', 'uppercase', 'special'],
+  minTypes: 2,
+  maxTypes: 4
+}
+checkPassword('12345678',json)
+```
+
+```js [HTML]
+var json = {
+  minLength: 8,
+  maxLength: 16,
+  types: ['number', 'lowercase', 'uppercase', 'special'],
+  minTypes: 2,
+  maxTypes: 4
+}
+galanga.checkPassword('12345678',json)
+```
+
+:::
