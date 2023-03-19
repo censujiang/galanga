@@ -1,5 +1,5 @@
 /*!
- * galanga 0.0.18 (https://github.com/censujiang/galanga)
+ * galanga 0.0.19 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -114,21 +114,33 @@
   //自动转换字节的单位，会有两个参数输入到此函数，分别是数量，和一个json对象，对象中有三个属性，分别是保留的小数位数（默认为1），输入的字节是哪种单位（默认为B，没有名为auto的值），输出的字节是哪种单位（默认为auto）
   //首先根据输入的数量和输入的字节单位，自动转换成字节数（以B为单位）
   //然后根据设置的输出的字节单位，自动转换成对应的字节单位。如果输出的字节单位为auto，则根据输入的字节单位自动转换成合适的字节单位
+  //最后返回转换后的字符串
   function formatBytes(bytes, _a) {
       var _b = _a === void 0 ? {} : _a, _c = _b.decimals, decimals = _c === void 0 ? 1 : _c, _d = _b.from, from = _d === void 0 ? 'B' : _d, _e = _b.to, to = _e === void 0 ? 'auto' : _e;
-      if (bytes === 0)
+      //如果输入的bytes为负数的处理
+      if (bytes < 0) {
+          return '-' + formatBytes(-bytes, {
+              decimals: decimals,
+              from: from,
+              to: to
+          });
+      }
+      else if (bytes === 0) {
           return '0 B';
-      var k = 1024;
-      var dm = decimals < 0 ? 0 : decimals;
-      var sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-      var i = from === 'auto' ? Math.floor(Math.log(bytes) / Math.log(k)) : sizes.indexOf(from);
-      bytes = bytes / Math.pow(k, i);
-      if (to === 'auto') {
-          var j = Math.floor(Math.log(bytes) / Math.log(k));
-          return parseFloat((bytes / Math.pow(k, j)).toFixed(dm)) + ' ' + sizes[j];
       }
       else {
-          return parseFloat((bytes).toFixed(dm)) + ' ' + to;
+          var k = 1024;
+          var dm = decimals < 0 ? 0 : decimals;
+          var sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+          var i = from === 'auto' ? Math.floor(Math.log(bytes) / Math.log(k)) : sizes.indexOf(from);
+          bytes = bytes / Math.pow(k, i);
+          if (to === 'auto') {
+              var j = Math.floor(Math.log(bytes) / Math.log(k));
+              return parseFloat((bytes / Math.pow(k, j)).toFixed(dm)) + ' ' + sizes[j];
+          }
+          else {
+              return parseFloat((bytes).toFixed(dm)) + ' ' + to;
+          }
       }
   }
 

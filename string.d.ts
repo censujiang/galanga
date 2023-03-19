@@ -4,4 +4,4 @@ export declare function formatBytes(bytes: number, { decimals, from, to }?: {
     decimals?: number;
     from?: string;
     to?: string;
-}): string;
+}): any;

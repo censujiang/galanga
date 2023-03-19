@@ -1,6 +1,6 @@
 {
   "name": "galanga",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "JS common function library",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
