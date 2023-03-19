@@ -1,36 +1,72 @@
 # String
 
-## 介绍
-
 山奈提供了一些字符串处理的函数，用于处理字符串。
 
-## 导入
+## `checkNull`
 
-```js
-import { checkNull , strLength , formatBytes } from 'galanga'
-```
-
-## 使用
-
-### 判断字符串是否为空
+### 介绍
 
 判断字符串是否为空，如果字符串为空，则返回 `true`，否则返回 `false`。
 
+### 导入
+
 ```js
+import { checkNull } from 'galanga'
+```
+
+### 使用
+
+::: code-group
+
+```js [NPM]
 checkNull(name)
 ```
 
-### 获取字符串长度
+```js [HTML]
+galanga.checkNull(name)
+```
+
+:::
+
+## `strLength`
+
+### 介绍
 
 获取字符串的长度，如果字符串为空，则返回 `0`。
 
+### 导入
+
 ```js
+import { strLength } from 'galanga'
+```
+
+### 使用
+
+::: code-group
+
+```js [NPM]
 strLength(name)
 ```
 
-### 格式化字节
+```js [HTML]
+galanga.strLength(name)
+```
+
+:::
+
+## `formatBytes`
+
+### 介绍
 
 将字节格式化为 `B`、`KB`、`MB`、`GB`、`TB`、`PB`、`EB`、`ZB`、`YB`。
+
+### 导入
+
+```js
+import { formatBytes } from 'galanga'
+```
+
+### 使用
 
 输入参数：
 
@@ -44,7 +80,9 @@ strLength(name)
 
   - `to`：输出的字节单位
 
-```js
+::: code-group
+
+```js [NPM]
 const json = {
   decimals: 1,
   from: 'B',
@@ -52,3 +90,14 @@ const json = {
 }
 formatBytes(1024,json)
 ```
+
+```js [HTML]
+var json = {
+  decimals: 1,
+  from: 'B',
+  to: 'KB'
+}
+galanga.formatBytes(1024,json)
+```
+
+:::

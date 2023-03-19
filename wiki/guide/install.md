@@ -4,9 +4,17 @@
 
 在NPM项目下，您可以通过以下命令安装山奈：
 
-```bash
+::: code-group
+
+```bash [yarn]
+yarn add galanga
+```
+
+```bash [npm]
 npm install galanga
 ```
+
+:::
 
 安装完成后，您可以在项目中引入山奈并使用对应的功能（目前暂不支持将全部函数一键引入至项目内）：
 
