@@ -108,15 +108,16 @@ function strLength(str) {
     }
 }
 //自动转换字节的单位，会有两个参数输入到此函数，分别是数量，和一个json对象，对象中有三个属性，分别是保留的小数位数（默认为1），输入的字节是哪种单位（默认为B），输出的字节是哪种单位（默认为auto）
-//需要根据输入的字节单位和数量，计算出输出的字节数：如果设置了输出的字节单位是auto，则需要根据字节数自动计算出输出的字节单位并输出字节数。如果在设置了输出的字节单位为具体的某个单位，则根据输入的字节单位和数量，计算出输出的字节数。
+//首先根据输入的数量和输入的字节单位，自动转换成字节数
+//然后根据输出的字节单位，自动转换成对应的字节单位，如果输出的字节单位为auto，则根据输入的字节单位自动转换成合适的字节单位
 function formatBytes(bytes, _a) {
     var _b = _a === void 0 ? {} : _a, _c = _b.decimals, decimals = _c === void 0 ? 1 : _c, _d = _b.from, from = _d === void 0 ? 'B' : _d, _e = _b.to, to = _e === void 0 ? 'auto' : _e;
     if (bytes === 0)
-        return '0 Bytes';
+        return '0 B';
     var k = 1024;
     var dm = decimals < 0 ? 0 : decimals;
-    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-    var i = from === 'B' ? Math.floor(Math.log(bytes) / Math.log(k)) : sizes.indexOf(from);
+    var sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    var i = from === 'auto' ? Math.floor(Math.log(bytes) / Math.log(k)) : sizes.indexOf(from);
     if (to === 'auto') {
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }

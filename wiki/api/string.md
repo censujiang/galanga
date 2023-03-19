@@ -30,7 +30,7 @@ strLength(name)
 
 ### 格式化字节
 
-将字节（单位为B）格式化为 `KB`、`MB`、`GB` 等。
+将字节格式化为 `B`、`KB`、`MB`、`GB`、`TB`、`PB`、`EB`、`ZB`、`YB`。
 
 输入参数：
 
@@ -42,7 +42,7 @@ strLength(name)
 
   - `from`：输入的字节单位，默认为B
 
-  - `to`：输出的字节单位，默认为KB
+  - `to`：输出的字节单位
 
 ```js
 const json = {
