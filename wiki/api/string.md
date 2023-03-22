@@ -18,11 +18,11 @@ import { checkNull } from 'galanga'
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 checkNull(name)
 ```
 
-```js [HTML]
+```js [全局引入]
 galanga.checkNull(name)
 ```
 
@@ -44,11 +44,11 @@ import { strLength } from 'galanga'
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 strLength(name)
 ```
 
-```js [HTML]
+```js [全局引入]
 galanga.strLength(name)
 ```
 
@@ -82,7 +82,7 @@ import { formatBytes } from 'galanga'
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 const json = {
   decimals: 1,
   from: 'B',
@@ -91,7 +91,7 @@ const json = {
 formatBytes(1024,json)
 ```
 
-```js [HTML]
+```js [全局引入]
 var json = {
   decimals: 1,
   from: 'B',
@@ -134,7 +134,7 @@ import { checkPassword } from 'galanga'
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 const json = {
   minLength: 8,
   maxLength: 16,
@@ -145,7 +145,7 @@ const json = {
 checkPassword('12345678',json)
 ```
 
-```js [HTML]
+```js [全局引入]
 var json = {
   minLength: 8,
   maxLength: 16,
@@ -154,6 +154,32 @@ var json = {
   maxTypes: 4
 }
 galanga.checkPassword('12345678',json)
+```
+
+:::
+
+## `checkEmail`
+
+### 介绍
+
+检查邮箱格式的函数，如果符合要求，则返回 `true`，否则返回 `false`。
+
+### 导入
+
+```js
+import { checkEmail } from 'galanga'
+```
+
+### 使用
+
+::: code-group
+
+```js [按需引入]
+checkEmail('info@sancerain.com')
+```
+
+```js [全局引入]
+galanga.checkEmail('info@sancerain.com')
 ```
 
 :::

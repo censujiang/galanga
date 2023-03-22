@@ -22,11 +22,11 @@ import { localCookie } from 'galanga'
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 localCookie.getItem('name')
 ```
 
-```js [HTML]
+```js [全局引入]
 galanga.localCookie.getItem('name')
 ```
 
@@ -38,11 +38,11 @@ galanga.localCookie.getItem('name')
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 localCookie.setItem('name', 'value')
 ```
 
-```js [HTML]
+```js [全局引入]
 galanga.localCookie.setItem('name', 'value')
 ```
 
@@ -54,11 +54,11 @@ galanga.localCookie.setItem('name', 'value')
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 localCookie.removeItem('name')
 ```
 
-```js [HTML]
+```js [全局引入]
 galanga.localCookie.removeItem('name')
 ```
 
@@ -70,11 +70,11 @@ galanga.localCookie.removeItem('name')
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 localCookie.clear()
 ```
 
-```js [HTML]
+```js [全局引入]
 galanga.localCookie.clear()
 ```
 

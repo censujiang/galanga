@@ -16,7 +16,17 @@ npm install galanga
 
 :::
 
-安装完成后，您可以在项目中引入山奈并使用对应的功能（目前暂不支持将全部函数一键引入至项目内）：
+安装完成后，您可以在项目中引入山奈并使用对应的功能：
+
+### 全部引入
+
+```js
+import galanga from 'galanga'
+
+console.log(galanga.name)
+```
+
+### 按需引入
 
 ```js
 import { name } from 'galanga'

@@ -21,11 +21,11 @@ import { url } from 'galanga'
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 url.getQuery('name')
 ```
 
-```js [HTML]
+```js [全局引入]
 galanga.url.getQuery('name')
 ```
 
@@ -37,11 +37,11 @@ galanga.url.getQuery('name')
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 url.getHash()
 ```
 
-```js [HTML]
+```js [全局引入]
 galanga.url.getHash()
 ```
 
@@ -53,11 +53,11 @@ galanga.url.getHash()
 
 ::: code-group
 
-```js [NPM]
+```js [按需引入]
 url.getPath()
 ```
 
-```js [HTML]
+```js [全局引入]
 galanga.url.getPath()
 ```
 

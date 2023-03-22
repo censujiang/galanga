@@ -96,3 +96,10 @@ export function checkPassword(password: string, {
   }
   return true;
 }
+
+
+//检查是否为Email的函数，会有一个参数输入到此函数，分别是Email
+export function checkEmail(email: string) {
+  const reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
+  return reg.test(email)
+}
