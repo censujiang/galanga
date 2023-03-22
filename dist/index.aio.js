@@ -1,5 +1,5 @@
 /*!
- * galanga 0.0.20 (https://github.com/censujiang/galanga)
+ * galanga 0.0.21 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -176,10 +176,16 @@
       }
       return true;
   }
+  //检查是否为Email的函数，会有一个参数输入到此函数，分别是Email
+  function checkEmail(email) {
+      var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+      return reg.test(email);
+  }
 
   //导出自己的名字
   var name = 'galanga';
 
+  exports.checkEmail = checkEmail;
   exports.checkNull = checkNull;
   exports.checkPassword = checkPassword;
   exports.formatBytes = formatBytes;
