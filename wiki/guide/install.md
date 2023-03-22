@@ -14,6 +14,14 @@ yarn add galanga
 npm install galanga
 ```
 
+```bash [pnpm]
+pnpm install galanga
+```
+
+```bash [cnpm]
+cnpm install galanga
+```
+
 :::
 
 安装完成后，您可以在项目中引入山奈并使用对应的功能：
