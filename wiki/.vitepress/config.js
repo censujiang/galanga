@@ -56,6 +56,7 @@ export default {
         { text: '饼干Cookie', link: '/api/cookie' },
         { text: '网址URL', link: '/api/url' },
         { text: '字符串String', link: '/api/string' },
+        { text: '设备Device', link: '/api/device' },
       ]
     },
     editLink: {
