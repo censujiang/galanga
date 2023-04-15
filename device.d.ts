@@ -1,1 +1,1 @@
-export declare function checkDeviceType(): "android" | "ios" | "pad" | "watch" | "desktop";
+export declare function checkDeviceType(types?: string[]): any;
