@@ -9,6 +9,11 @@ export function checkNull(val: any) {
   }
 }
 
+// 检查输入的值是否非空
+export function checkNotNull(val: any) {
+  return !checkNull(val);
+}
+
 //获取字符串的字节数
 export function strLength(str: string) {
   let count = 0;  //初始化字节数递加变量并获取字符串参数的字符个数

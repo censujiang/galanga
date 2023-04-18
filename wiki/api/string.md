@@ -28,6 +28,30 @@ galanga.checkNull(name)
 
 :::
 
+## `checkNotNull`
+
+### 介绍
+
+判断字符串是否不为空（非空），如果字符串不为空，则返回 `true`，否则返回 `false`。此函数会反义 `checkNull` 函数。这也是为了业务逻辑的统一，方便使用。
+
+### 导入
+
+```js
+import { checkNotNull } from 'galanga'
+```
+
+### 使用
+
+::: code-group
+
+```js [按需引入]
+checkNotNull(name)
+```
+
+```js [全局引入]
+galanga.checkNotNull(name)
+```
+
 ## `strLength`
 
 ### 介绍
