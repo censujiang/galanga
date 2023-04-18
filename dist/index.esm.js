@@ -1,5 +1,5 @@
 /*!
- * galanga 0.0.23 (https://github.com/censujiang/galanga)
+ * galanga 0.0.24 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -85,6 +85,10 @@ function checkNull(val) {
     else {
         return false;
     }
+}
+// 检查输入的值是否非空
+function checkNotNull(val) {
+    return !checkNull(val);
 }
 //获取字符串的字节数
 function strLength(str) {
@@ -352,4 +356,4 @@ function checkDeviceType(types, return_string) {
 //导出自己的名字
 var name = 'galanga';
 
-export { checkDeviceType, checkEmail, checkNull, checkPassword, formatBytes, localCookie, name, strLength, url };
+export { checkDeviceType, checkEmail, checkNotNull, checkNull, checkPassword, formatBytes, localCookie, name, strLength, url };
