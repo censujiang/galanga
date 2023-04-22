@@ -1,5 +1,5 @@
 /*!
- * galanga 0.0.24 (https://github.com/censujiang/galanga)
+ * galanga 0.0.25 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -82,7 +82,7 @@
 
   // 检查输入的值是否为空
   function checkNull(val) {
-      if (val == null || val == undefined || val == '') {
+      if (val == null || val == undefined || val == '' || typeof val === 'number' && isNaN(val)) {
           return true;
       }
       else if (Array.isArray(val) && val.length === 0) {
