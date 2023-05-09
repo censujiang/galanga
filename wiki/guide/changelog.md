@@ -1,4 +1,9 @@
 # 更新日志
+
+## 0.0.27 (2023-5-9)
+
+- 新增了`filterUniqueByProperty`函数，用于根据数组中对象的某个属性去重，将length大的数组保留，length小的数组去掉。
+
 ## 0.0.26 (2023-5-9)
 
 - 新增了`updateObjectFromImport`函数，用于将新的object中的值动态更新到原有的object中，并不影响原有object中的结构。

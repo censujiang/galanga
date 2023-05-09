@@ -18,17 +18,17 @@ import { updateObjectFromImport } from 'galanga'
 
 输入的参数如下：
 
-- `importObject`: 新的object，用于更新原有的object
-- `object`: 原有的object
+- `importObject`[object]: 新的object，用于更新原有的object
+- `object`[object]: 原有的object
 
 ::: code-group
 
 ```js [按需引入]
-updateObjectFromImport(importObject, object)
+object = updateObjectFromImport(importObject, object)
 ```
 
 ```js [全局引入]
-galanga.updateObjectFromImport(importObject, object)
+object = galanga.updateObjectFromImport(importObject, object)
 ```
 
 :::

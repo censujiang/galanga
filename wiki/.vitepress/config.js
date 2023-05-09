@@ -58,6 +58,7 @@ export default {
         { text: '字符串String', link: '/api/string' },
         { text: '设备Device', link: '/api/device' },
         { text: '对象Object', link: '/api/object' },
+        { text: '数组Array', link: '/api/array' },
       ]
     },
     editLink: {
