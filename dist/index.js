@@ -1,5 +1,5 @@
 /*!
- * galanga 0.0.25 (https://github.com/censujiang/galanga)
+ * galanga 0.0.26 (https://github.com/censujiang/galanga)
  * API https://github.com/censujiang/galanga/blob/master/doc/api.md
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -355,6 +355,23 @@ function checkDeviceType(types, return_string) {
     return result;
 }
 
+//将importObject中的值更新到object中，如果importObject中的值为空，则不更新
+function updateObjectFromImport(importObject, object) {
+    for (var key in object) {
+        if (importObject.hasOwnProperty(key)) {
+            if (typeof object[key] === 'object' && typeof importObject[key] === 'object') {
+                updateObjectFromImport(importObject[key], object[key]);
+            }
+            else {
+                //再根据是否为空来判断是否要更新
+                if (checkNotNull(importObject[key])) {
+                    object[key] = importObject[key];
+                }
+            }
+        }
+    }
+}
+
 //导出自己的名字
 var name = 'galanga';
 
@@ -367,4 +384,5 @@ exports.formatBytes = formatBytes;
 exports.localCookie = localCookie;
 exports.name = name;
 exports.strLength = strLength;
+exports.updateObjectFromImport = updateObjectFromImport;
 exports.url = url;

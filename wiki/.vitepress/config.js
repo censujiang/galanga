@@ -57,6 +57,7 @@ export default {
         { text: '网址URL', link: '/api/url' },
         { text: '字符串String', link: '/api/string' },
         { text: '设备Device', link: '/api/device' },
+        { text: '对象Object', link: '/api/object' },
       ]
     },
     editLink: {
