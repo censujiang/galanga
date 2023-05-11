@@ -1,7 +1,5 @@
 # [山奈Galanga](https://github.com/censujiang/galanga)
 
-⚠ 本项目仍处于开发阶段，API可能会发生变化，请勿用于生产环境。
-
 开源好用的 `JS|TS` 常用函数库
 
 [官方文档](https://galanga.censujiang.com) | [中国镜像](https://galanga.censujiang.cn)
@@ -54,7 +52,7 @@ $ npm install --save galanga
 var base = require('galanga');
 ```
 
-如果你是webpack等环境
+如果你是webpack、vite等环境
 
 ```js
 import base from 'galanga';
