@@ -1,11 +1,15 @@
 // 检查输入的值是否为空
 export function checkNull(val: any) {
-  if (val == null || val == undefined || val == '' || typeof val === 'number' && isNaN(val)) {
-    return true;
-  } else if (Array.isArray(val) && val.length === 0) {
-    return true;
-  } else {
+  if (val === false || val === true) {
     return false;
+  } else {
+    if (val === null || val === undefined || val === '' || typeof val === 'number' && isNaN(val)) {
+      return true;
+    } else if (Array.isArray(val) && val.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

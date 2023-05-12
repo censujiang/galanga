@@ -1,5 +1,9 @@
 # 更新日志
 
+## 0.1.2 (2023-5-12)
+
+- 修复`checkNull`函数的bug，现在匹配到false的情况会返回false了。
+
 ## 0.1.1 (2023-5-12)
 
 - 修复`updateObjectFromImport`函数的bug，现在可以正常使用了。
