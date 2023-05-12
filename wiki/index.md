@@ -3,8 +3,11 @@ layout: home
 
 hero:
   name: 山奈Galanga
-  text: 开源的JS常用函数库
+  text: "开源好用的\nJS/TS常用函数库"
   tagline: 简单引入，美味享受
+  image:
+    src: /assets/img/logo.svg
+    alt: 山奈Galanga
   actions:
     - theme: brand
       text: 开箱即用
@@ -12,6 +15,9 @@ hero:
     - theme: alt
       text: 查看GitHub
       link: https://github.com/censujiang/galanga?from=galanga_docs
+    - theme: alt
+      text: 查看Gitee
+      link: https://gitee.com/censujiang/galanga?from=galanga_docs
 
 features:
   - icon: 🛠️

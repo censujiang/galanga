@@ -1,9 +1,11 @@
 :root{
-  --vp-c-brand: #ee4866;
-  --vp-c-brand-light: #f7a1b5;
-  --vp-c-brand-lighter: #fbc8d5;
-  --vp-c-brand-dark: #b81d3a;
-  --vp-c-brand-darker: #8c1a2f;
+  --vp-c-brand: #FFCA28;
+  --vp-c-brand-light: #E5B27F;
+  --vp-c-brand-lighter: #FFE57F;
+  --vp-c-brand-dark: #C69461;
+  --vp-c-brand-darker: #BC8346;
+  --vp-home-hero-image-background-image: linear-gradient( 15deg, #FFCA28 65%, #C69461 30% );
+  --vp-home-hero-image-filter: blur(72px);
 }
 
 .dark{

@@ -1,3 +1,5 @@
+<div align=center>![山奈Galanga](/wiki/assets/img/logo.svg)</div>
+
 # [山奈Galanga](https://github.com/censujiang/galanga)
 
 开源好用的 `JS|TS` 常用函数库
@@ -43,7 +45,7 @@
 通过npm下载安装代码
 
 ```bash
-$ npm install --save galanga
+npm install --save galanga
 ```
 
 如果你是node环境
@@ -81,7 +83,9 @@ requirejs(['node_modules/galanga/dist/index.aio.js'], function (base) {
 [![贡献者名单](https://contrib.rocks/image?repo=censujiang/galanga)](https://github.com/censujiang/galanga/graphs/contributors)
 
 ## :gear: 更新日志
+
 [CHANGELOG.md](./wiki/guide/changelog.md)
 
 ## :airplane: 计划列表
+
 [TODO.md](./wiki/guide/todo.md)

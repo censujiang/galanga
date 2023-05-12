@@ -32,3 +32,23 @@ object = galanga.updateObjectFromImport(importObject, object)
 ```
 
 :::
+
+::: details 注意
+
+如果原有的object是响应式的，那么在将object作为参数传入函数后，要么会污染原有的object，要么会导致函数失去响应式。具体情况取决于您的使用场景和框架。
+
+如果在这种场景下，您仍然想要使用这个函数，并不希望污染原有的object，那么您可以使用下面的方法：
+
+::: code-group
+
+```js [按需引入]
+let newObject = object
+newObject = updateObjectFromImport(importObject, newObject)
+```
+
+```js [全局引入]
+let newObject = object
+newObject = galanga.updateObjectFromImport(importObject, newObject)
+```
+
+:::
