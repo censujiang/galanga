@@ -18,11 +18,11 @@ export default {
     
       gtag('config', 'G-KDRRLCH82B');
     `],
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/assets/img/logo.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
   ],
   themeConfig: {
     siteTitle: 'Galanga',
-    logo: '/assets/img/logo.svg',
+    logo: '/logo.svg',
     nav: [
       { text: '首页', link: '/' },
       { text: '指引', link: '/guide/' },

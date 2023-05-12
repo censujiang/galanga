@@ -1,4 +1,13 @@
-<div align=center>![山奈Galanga](/wiki/assets/img/logo.svg)</div>
+<p align="center">
+  <a href="https://galanga.censujiang.com" target="_blank" rel="noopener noreferrer">
+    <img width="180" src="https://galanga.censujiang.com/logo.svg" alt="Galanga logo">
+  </a>
+</p>
+<br/>
+<p align="center">
+  <a href="https://npmjs.com/package/galanga"><img src="https://badgen.net/npm/v/galanga" alt="npm package"></a>
+</p>
+<br/>
 
 # [山奈Galanga](https://github.com/censujiang/galanga)
 

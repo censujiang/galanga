@@ -6,7 +6,7 @@ hero:
   text: "开源好用的\nJS/TS常用函数库"
   tagline: 简单引入，美味享受
   image:
-    src: /assets/img/logo.svg
+    src: /logo.svg
     alt: 山奈Galanga
   actions:
     - theme: brand
