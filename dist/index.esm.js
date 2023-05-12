@@ -368,6 +368,7 @@ function updateObjectFromImport(importObject, object) {
             }
         }
     }
+    return object;
 }
 
 //去除数组中重复的对象，将length大的数组保留，length小的数组去掉
