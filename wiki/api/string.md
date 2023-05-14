@@ -52,6 +52,8 @@ checkNotNull(name)
 galanga.checkNotNull(name)
 ```
 
+:::
+
 ## `strLength`
 
 ### 介绍
