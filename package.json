@@ -1,6 +1,6 @@
 {
   "name": "galanga",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "JS common function library",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -12,7 +12,7 @@
     "release": "node ./scripts/release.js",
     "lint": "eslint src/ --ext .ts,.tsx,.js,.jsx --cache",
     "lint:fix": "eslint src/ --ext .ts,.tsx,.js,.jsx --cache --fix",
-    "tsc": "tsc ./src/index.ts --declaration --declarationMap --emitDeclarationOnly --outDir ./types",
+    "tsc": "tsc ./src/index.ts --declaration --outDir ./esm --declarationDir ./types",
     "build": "npm run clean && npm run build:self && npm run build:self.min && npm run build:esm && npm run build:esm.min && npm run build:aio && npm run build:aio.min",
     "build:self": "rollup -c config/rollup.config.js",
     "build:self.min": "cross-env NODE_ENV=production npm run build:self",

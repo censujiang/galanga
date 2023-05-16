@@ -6,4 +6,3 @@ export declare const localCookie: {
     keys: () => string[];
     clear: () => void;
 };
-//# sourceMappingURL=cookie.d.ts.map

@@ -3,7 +3,7 @@
 // commonjs
 var common = require('./rollup.js');
 var uglify = require('rollup-plugin-uglify').uglify;
-var typescript = require('@rollup/plugin-typescript');
+//var typescript = require('@rollup/plugin-typescript');
 
 var prod = process.env.NODE_ENV === 'production';
 
@@ -17,9 +17,6 @@ module.exports = {
         banner: common.banner,
     },
     plugins: [
-        typescript({
-            declaration: false,
-        }),
         common.getCompiler({
             tsconfigOverride: { compilerOptions: { declaration: true, module: 'ES2015' } },
             useTsconfigDeclarationDir: true

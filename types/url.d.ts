@@ -3,4 +3,3 @@ export declare const url: {
     getHash(name: string): string;
     getPath(): string;
 };
-//# sourceMappingURL=url.d.ts.map

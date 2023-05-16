@@ -3,4 +3,3 @@ export declare function updateObjectFromImport(importObject: {
 }, object: {
     [key: string]: any;
 }): object;
-//# sourceMappingURL=object.d.ts.map

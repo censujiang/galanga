@@ -14,4 +14,3 @@ export declare function checkPassword(password: string, { minLength, maxLength, 
     maxTypes?: number;
 }): boolean;
 export declare function checkEmail(email: string): boolean;
-//# sourceMappingURL=string.d.ts.map

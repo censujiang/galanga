@@ -5,4 +5,3 @@ interface DeviceInfo {
 }
 export declare function checkDeviceType(types?: string[], return_string?: boolean): DeviceInfo | string;
 export {};
-//# sourceMappingURL=device.d.ts.map

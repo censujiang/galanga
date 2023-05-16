@@ -4,7 +4,7 @@
 var nodeResolve = require('rollup-plugin-node-resolve');
 var commonjs = require('rollup-plugin-commonjs');
 var uglify = require('rollup-plugin-uglify').uglify;
-var typescript = require('@rollup/plugin-typescript');
+//var typescript = require('@rollup/plugin-typescript');
 
 var common = require('./rollup.js');
 
@@ -21,9 +21,6 @@ module.exports = {
         banner: common.banner,
     },
     plugins: [
-        typescript({
-            declaration: false,
-        }),
         nodeResolve({
             main: true,
             extensions: ['.ts', '.js']

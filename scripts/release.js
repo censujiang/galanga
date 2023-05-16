@@ -1,9 +1,10 @@
 const packageJson = require('../package.json');
 const shell = require('shelljs');
 
+shell.exec('npm run tsc');
 shell.exec('npm run build');
 shell.exec('npm run docs:build');
-shell.exec('node ./scripts/delDistDTsFile.js');
+//shell.exec('node ./scripts/delDistDTsFile.js');
 
 setTimeout(() => {
   shell.exec('git add -A .');
