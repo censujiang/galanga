@@ -3,7 +3,7 @@
 		"target": "esnext",
 		"module": "esnext",
 		"noImplicitAny": false,
-		"rootDir": "./",//暂时别动这个
+		"rootDir": "./src",//暂时别动这个
     "outDir": "./esm",
 		"strict":false,
     "noEmitOnError":false,

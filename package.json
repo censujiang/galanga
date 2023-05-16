@@ -1,6 +1,6 @@
 {
   "name": "galanga",
-  "version": "0.1.3-fix.1",
+  "version": "0.1.3-fix.2",
   "description": "JS common function library",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -40,7 +40,8 @@
     "/src",
     "*.d.ts",
     "/esm",
-    "/types"
+    "/types",
+    "tsconfig.json"
   ],
   "engines": {
     "node": ">= 0.12.0"
