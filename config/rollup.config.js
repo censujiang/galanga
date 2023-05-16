@@ -3,6 +3,7 @@
 // commonjs
 var common = require('./rollup.js');
 var uglify = require('rollup-plugin-uglify').uglify;
+var typescript = require('@rollup/plugin-typescript');
 
 var prod = process.env.NODE_ENV === 'production';
 

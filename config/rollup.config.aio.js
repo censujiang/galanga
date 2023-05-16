@@ -4,6 +4,7 @@
 var nodeResolve = require('rollup-plugin-node-resolve');
 var commonjs = require('rollup-plugin-commonjs');
 var uglify = require('rollup-plugin-uglify').uglify;
+var typescript = require('@rollup/plugin-typescript');
 
 var common = require('./rollup.js');
 

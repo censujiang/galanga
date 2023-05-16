@@ -1,15 +1,20 @@
 {
-    "compilerOptions": {
-        "target": "ES5",
-        "module": "commonjs",
-        "declaration": true,
-        "declarationDir": "/types",
-    },
-    "include": [
-        "src/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "**.d.ts"
-    ]
+	"compilerOptions": {
+		"target": "ES5",
+		"module": "esnext",
+		"declaration": true,
+		"noImplicitAny": true,
+		"rootDir": ".",
+    "outDir": "./dist",
+		"declarationDir": "./types",
+		"baseUrl": "./src", /* 查找模块的基础目录 */ 
+	},
+	"include": [
+		"src//*.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"/*.d.ts",
+		"/types/*.d.ts"
+	]
 }

@@ -2,7 +2,7 @@ import { checkNotNull } from './string';
 
 
 //将importObject中的值更新到object中，如果importObject中的值为空，则不更新
-export function updateObjectFromImport(importObject: object, object: object) {
+export function updateObjectFromImport(importObject: { [key: string]: any }, object: { [key: string]: any }): object {
   for (let key in object) {
     if (importObject.hasOwnProperty(key)) {
       if (typeof object[key] === 'object' && typeof importObject[key] === 'object') {

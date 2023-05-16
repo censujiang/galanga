@@ -3,6 +3,7 @@
 // ES output
 var common = require('./rollup.js');
 var terser = require('rollup-plugin-terser').terser;
+var typescript = require('@rollup/plugin-typescript');
 
 var prod = process.env.NODE_ENV === 'production';
 

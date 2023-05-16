@@ -40,7 +40,7 @@ export function formatBytes(bytes: number, {
   decimals = 1,
   from = 'B',
   to = 'auto'
-} = {}) {
+} = {}): string {
   //如果输入的bytes为负数的处理
   if (bytes < 0) {
     return '-' + formatBytes(-bytes, {
