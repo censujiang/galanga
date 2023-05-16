@@ -5,7 +5,7 @@ export declare function formatBytes(bytes: number, { decimals, from, to }?: {
     decimals?: number;
     from?: string;
     to?: string;
-}): any;
+}): string;
 export declare function checkPassword(password: string, { minLength, maxLength, types, minTypes, maxTypes }?: {
     minLength?: number;
     maxLength?: number;

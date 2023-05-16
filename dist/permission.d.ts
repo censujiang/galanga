@@ -3,6 +3,6 @@ export declare const notificationPermission: {
     request: () => Promise<boolean>;
 };
 export declare const clipboardPermission: {
-    check: () => Promise<boolean>;
+    check: () => Promise<boolean | null>;
     request: () => Promise<boolean>;
 };

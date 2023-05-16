@@ -21,6 +21,9 @@ module.exports = {
         banner: common.banner,
     },
     plugins: [
+        typescript({
+            declaration: false,
+        }),
         nodeResolve({
             main: true,
             extensions: ['.ts', '.js']

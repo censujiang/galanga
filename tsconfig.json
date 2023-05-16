@@ -1,13 +1,14 @@
 {
 	"compilerOptions": {
-		"target": "ES5",
+		"target": "esnext",
 		"module": "esnext",
+		"noImplicitAny": false,
+		"rootDir": "./",//暂时别动这个
+    "outDir": "./esm",
+		"strict":false,
+    "noEmitOnError":false,
 		"declaration": true,
-		"noImplicitAny": true,
-		"rootDir": ".",
-    "outDir": "./dist",
-		"declarationDir": "./types",
-		"baseUrl": "./src", /* 查找模块的基础目录 */ 
+    "declarationDir": "./types"
 	},
 	"include": [
 		"src//*.ts"

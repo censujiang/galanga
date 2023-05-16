@@ -31,11 +31,11 @@ export const notificationPermission = {
   }
 }
 
-//剪切板权限相关
+// 剪切板权限相关
 export const clipboardPermission = {
-  //判断是否有剪切板权限
-  check: async () => {
-    //判断浏览器是否支持Clipboard
+  // 判断是否有剪切板权限
+  check: async (): Promise<boolean | null> => {
+    // 判断浏览器是否支持Clipboard
     if (!('Clipboard' in window)) {
       return false;
     } else {
@@ -54,23 +54,19 @@ export const clipboardPermission = {
       }
     }
   },
-  //请求剪切板权限
-  request: async () => {
+  // 请求剪切板权限
+  request: async (): Promise<boolean> => {
     let check = await clipboardPermission.check();
-    if (check == null) {
+    if (check === null) {
       try {
         await navigator.clipboard.readText();
         return true;
       } catch {
         check = await clipboardPermission.check();
-        if(check == true){
-          return true;
-        }else{
-          return false;
-        }
+        return check === true;
       }
-    }else{
-      return check;
+    } else {
+      return check === true;
     }
   }
-}
+};

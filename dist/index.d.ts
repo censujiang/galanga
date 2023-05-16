@@ -9,3 +9,4 @@ export { checkDeviceType } from './device';
 export { updateObjectFromImport } from './object';
 export { filterUniqueByProperty } from './array';
 export { notificationPermission, clipboardPermission } from './permission';
+export { formatNumber } from './number';
