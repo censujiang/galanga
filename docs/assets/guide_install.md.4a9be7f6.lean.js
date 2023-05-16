@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as l,U as n}from"./chunks/framework.fd4dbc48.js";const F=JSON.parse('{"title":"安装","description":"","frontmatter":{},"headers":[],"relativePath":"guide/install.md","lastUpdated":1679483920000}'),p={name:"guide/install.md"},o=n("",19),e=[o];function t(c,r,i,y,d,D){return a(),l("div",null,e)}const g=s(p,[["render",t]]);export{F as __pageData,g as default};
