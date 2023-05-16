@@ -2,7 +2,8 @@
     "compilerOptions": {
         "target": "ES5",
         "module": "commonjs",
-        "declarationDir": "."
+        "declaration": true,
+        "declarationDir": "/types",
     },
     "include": [
         "src/**/*.ts"
