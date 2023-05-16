@@ -31,6 +31,7 @@ export const notificationPermission = {
   }
 }
 
+
 // 剪切板权限相关
 export const clipboardPermission = {
   // 判断是否有剪切板权限
@@ -41,7 +42,8 @@ export const clipboardPermission = {
     } else {
       // 尝试读取剪切板内容
       try {
-        const info = await navigator.permissions.query({ name: 'clipboard-read' as any });
+        const permissionName = "clipboard-write" as PermissionName;
+        const info = await navigator.permissions.query({ name: permissionName });
         if (info.state === 'granted') {
           return true;
         } else if (info.state === 'prompt') {

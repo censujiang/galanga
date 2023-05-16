@@ -7,7 +7,8 @@
     "outDir": "./esm",
 		"strict":false,
     "noEmitOnError":false,
-		"declaration": false,
+		"declaration": true,
+		"declarationDir": "./types",
 	},
 	"include": [
 		"src//*.ts"

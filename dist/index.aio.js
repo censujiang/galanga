@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.3 (https://github.com/censujiang/galanga)
+ * galanga 0.1.3-fix.1 (https://github.com/censujiang/galanga)
  * API https://censujiang.galanga.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -371,7 +371,8 @@
           else {
               // 尝试读取剪切板内容
               try {
-                  const info = await navigator.permissions.query({ name: 'clipboard-read' });
+                  const permissionName = "clipboard-write";
+                  const info = await navigator.permissions.query({ name: permissionName });
                   if (info.state === 'granted') {
                       return true;
                   }

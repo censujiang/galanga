@@ -85,7 +85,7 @@ exports.notificationPermission = {
 exports.clipboardPermission = {
     // 判断是否有剪切板权限
     check: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var info, _a;
+        var permissionName, info, _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -93,7 +93,8 @@ exports.clipboardPermission = {
                     return [2 /*return*/, false];
                 case 1:
                     _b.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, navigator.permissions.query({ name: 'clipboard-read' })];
+                    permissionName = "clipboard-write";
+                    return [4 /*yield*/, navigator.permissions.query({ name: permissionName })];
                 case 2:
                     info = _b.sent();
                     if (info.state === 'granted') {

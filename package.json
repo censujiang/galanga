@@ -1,10 +1,10 @@
 {
   "name": "galanga",
-  "version": "0.1.3",
+  "version": "0.1.3-fix.1",
   "description": "JS common function library",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
-  "module": "dist/index.esm.js",
+  "module": "esm/index.js",
   "sideEffects": false,
   "scripts": {
     "clean": "rimraf ./dist",
