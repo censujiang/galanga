@@ -41,3 +41,39 @@ checkDeviceType()
 ```js [全局引入]
 galanga.checkDeviceType()
 ```
+
+:::
+
+## `clipboard`
+
+### 介绍
+
+一个用于读取和设置剪切板的函数组合，包含了`read`和`write`两个函数
+
+### 导入
+
+```js
+import { clipboard } from 'galanga'
+```
+
+### 使用
+
+一共有两个函数，分别是`read`和`write`，分别用于读取和设置剪切板
+
+- [async]`read()`：读取剪切板的内容，返回一个`Promise`，如果读取成功，则返回剪切板的内容，否则返回`null`
+
+- [async]`write(text)`：设置剪切板的内容，返回一个`Promise`，如果设置成功，则返回`true`，否则返回`false`
+
+::: code-group
+
+```js [按需引入]
+clipboard.write('Hello World!')
+clipboard.read().then(text => console.log(text))
+```
+
+```js [全局引入]
+galanga.clipboard.write('Hello World!')
+galanga.clipboard.read().then(text => console.log(text))
+```
+
+:::

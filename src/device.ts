@@ -1,3 +1,29 @@
+import { clipboardPermission } from './permission'
+
+export const clipboard = {
+  read: async () => {
+    if (await clipboardPermission.request() == true) {
+      const text = await navigator.clipboard.readText();
+      return text;
+    } else {
+      return null;
+    }
+  },
+  write: async (value: string) => {
+    if (await clipboardPermission.request() == true) {
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch (error) {
+        console.error(error);
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+}
+
 interface DeviceInfo {
   os: string;
   browser: string;
