@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.localCookie = void 0;
 //操作cookie的方法
-exports.localCookie = {
+export const localCookie = {
     getItem: function (sKey) {
         return decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(sKey).replace(/[-.+*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
     },
@@ -10,7 +7,7 @@ exports.localCookie = {
         if (!sKey || /^(?:expires|max-age|path|domain|secure)$/i.test(sKey)) {
             return;
         }
-        var sExpires = '';
+        let sExpires = '';
         if (vEnd) {
             switch (vEnd.constructor) {
                 case Number:
@@ -43,15 +40,15 @@ exports.localCookie = {
         return (new RegExp('(?:^|;\\s*)' + encodeURIComponent(sKey).replace(/[-.+*]/g, '\\$&') + '\\s*\\=')).test(document.cookie);
     },
     keys: /* optional method: you can safely remove it! */ function () {
-        var aKeys = document.cookie.replace(/((?:^|\s*;)[^]+)(?=;|$)|^\s*|\s*(?:[^;]*)?(?:|$)/g, '').split(/\s*(?:[^;]*)?;\s*/);
-        for (var nIdx = 0; nIdx < aKeys.length; nIdx++) {
+        const aKeys = document.cookie.replace(/((?:^|\s*;)[^]+)(?=;|$)|^\s*|\s*(?:[^;]*)?(?:|$)/g, '').split(/\s*(?:[^;]*)?;\s*/);
+        for (let nIdx = 0; nIdx < aKeys.length; nIdx++) {
             aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]);
         }
         return aKeys;
     },
     clear: function () {
-        var keys = this.keys();
-        for (var i = 0; i < keys.length; i++) {
+        const keys = this.keys();
+        for (let i = 0; i < keys.length; i++) {
             this.removeItem(keys[i]);
         }
     }
