@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.3-fix.4 (https://github.com/censujiang/galanga)
+ * galanga 0.1.4 (https://github.com/censujiang/galanga)
  * API https://censujiang.galanga.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -185,6 +185,116 @@ function checkEmail(email) {
     return reg.test(email);
 }
 
+//通知权限相关
+const notificationPermission = {
+    //判断是否有通知权限
+    check: () => {
+        //判断浏览器是否支持Notification
+        if (!('Notification' in window)) {
+            return false;
+        }
+        else {
+            if (Notification.permission === 'granted') {
+                return true;
+            }
+            else if (Notification.permission === 'denied') {
+                return false;
+            }
+            else {
+                return null;
+            }
+        }
+    },
+    //请求通知权限
+    request: async () => {
+        let check = notificationPermission.check();
+        if (check == null) {
+            const info = await Notification.requestPermission();
+            if (info === 'granted') {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return check;
+        }
+    }
+};
+// 剪切板权限相关
+const clipboardPermission = {
+    // 判断是否有剪切板权限
+    check: async () => {
+        // 判断浏览器是否支持Clipboard
+        if (!('Clipboard' in window)) {
+            return false;
+        }
+        else {
+            // 尝试读取剪切板内容
+            try {
+                const permissionName = "clipboard-write";
+                const info = await navigator.permissions.query({ name: permissionName });
+                if (info.state === 'granted') {
+                    return true;
+                }
+                else if (info.state === 'prompt') {
+                    return null;
+                }
+                else {
+                    return false;
+                }
+            }
+            catch {
+                return false;
+            }
+        }
+    },
+    // 请求剪切板权限
+    request: async () => {
+        let check = await clipboardPermission.check();
+        if (check === null) {
+            try {
+                await navigator.clipboard.readText();
+                return true;
+            }
+            catch {
+                check = await clipboardPermission.check();
+                return check === true;
+            }
+        }
+        else {
+            return check === true;
+        }
+    }
+};
+
+const clipboard = {
+    read: async () => {
+        if (await clipboardPermission.request() == true) {
+            const text = await navigator.clipboard.readText();
+            return text;
+        }
+        else {
+            return null;
+        }
+    },
+    write: async (value) => {
+        if (await clipboardPermission.request() == true) {
+            try {
+                await navigator.clipboard.writeText(value);
+                return true;
+            }
+            catch (error) {
+                console.error(error);
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+};
 function checkDeviceType(types = ['os', 'browser', 'device'], return_string = false) {
     const ua = navigator.userAgent;
     function getOS() {
@@ -319,90 +429,6 @@ function filterUniqueByProperty(array, prop) {
     });
 }
 
-//通知权限相关
-const notificationPermission = {
-    //判断是否有通知权限
-    check: () => {
-        //判断浏览器是否支持Notification
-        if (!('Notification' in window)) {
-            return false;
-        }
-        else {
-            if (Notification.permission === 'granted') {
-                return true;
-            }
-            else if (Notification.permission === 'denied') {
-                return false;
-            }
-            else {
-                return null;
-            }
-        }
-    },
-    //请求通知权限
-    request: async () => {
-        let check = notificationPermission.check();
-        if (check == null) {
-            const info = await Notification.requestPermission();
-            if (info === 'granted') {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return check;
-        }
-    }
-};
-// 剪切板权限相关
-const clipboardPermission = {
-    // 判断是否有剪切板权限
-    check: async () => {
-        // 判断浏览器是否支持Clipboard
-        if (!('Clipboard' in window)) {
-            return false;
-        }
-        else {
-            // 尝试读取剪切板内容
-            try {
-                const permissionName = "clipboard-write";
-                const info = await navigator.permissions.query({ name: permissionName });
-                if (info.state === 'granted') {
-                    return true;
-                }
-                else if (info.state === 'prompt') {
-                    return null;
-                }
-                else {
-                    return false;
-                }
-            }
-            catch {
-                return false;
-            }
-        }
-    },
-    // 请求剪切板权限
-    request: async () => {
-        let check = await clipboardPermission.check();
-        if (check === null) {
-            try {
-                await navigator.clipboard.readText();
-                return true;
-            }
-            catch {
-                check = await clipboardPermission.check();
-                return check === true;
-            }
-        }
-        else {
-            return check === true;
-        }
-    }
-};
-
 function formatNumber(value) {
     return (Math.floor(value * 100) / 100).toString();
 }
@@ -418,6 +444,7 @@ exports.checkEmail = checkEmail;
 exports.checkNotNull = checkNotNull;
 exports.checkNull = checkNull;
 exports.checkPassword = checkPassword;
+exports.clipboard = clipboard;
 exports.clipboardPermission = clipboardPermission;
 exports.filterUniqueByProperty = filterUniqueByProperty;
 exports.formatBytes = formatBytes;

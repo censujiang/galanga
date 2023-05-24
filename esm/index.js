@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.formatNumber = exports.clipboardPermission = exports.notificationPermission = exports.filterUniqueByProperty = exports.updateObjectFromImport = exports.checkDeviceType = exports.checkEmail = exports.checkPassword = exports.formatBytes = exports.strLength = exports.checkNotNull = exports.checkNull = exports.url = exports.localCookie = exports.info = void 0;
+exports.formatNumber = exports.clipboardPermission = exports.notificationPermission = exports.filterUniqueByProperty = exports.updateObjectFromImport = exports.clipboard = exports.checkDeviceType = exports.checkEmail = exports.checkPassword = exports.formatBytes = exports.strLength = exports.checkNotNull = exports.checkNull = exports.url = exports.localCookie = exports.info = void 0;
 //导出自己的名字
 exports.info = {
     name: 'galanga',
@@ -20,6 +20,7 @@ Object.defineProperty(exports, "checkPassword", { enumerable: true, get: functio
 Object.defineProperty(exports, "checkEmail", { enumerable: true, get: function () { return string_1.checkEmail; } });
 var device_1 = require("./device");
 Object.defineProperty(exports, "checkDeviceType", { enumerable: true, get: function () { return device_1.checkDeviceType; } });
+Object.defineProperty(exports, "clipboard", { enumerable: true, get: function () { return device_1.clipboard; } });
 var object_1 = require("./object");
 Object.defineProperty(exports, "updateObjectFromImport", { enumerable: true, get: function () { return object_1.updateObjectFromImport; } });
 var array_1 = require("./array");
