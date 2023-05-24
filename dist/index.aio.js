@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.4 (https://github.com/censujiang/galanga)
+ * galanga 0.1.4-fix1 (https://github.com/censujiang/galanga)
  * API https://censujiang.galanga.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -43,7 +43,7 @@
                   (sPath ? '; path=' + sPath : '') +
                   (bSecure ? '; secure' : '');
       },
-      removeItem: function (sKey, sPath, sDomain) {
+      removeItem: function (sKey, sPath = '/', sDomain = window.location.hostname) {
           if (!sKey || !this.hasItem(sKey)) {
               return false;
           }
@@ -437,10 +437,12 @@
       return (Math.floor(value * 100) / 100).toString();
   }
 
+  //import * as packageJson from '../package.json'
   //导出自己的名字
   const info = {
       name: 'galanga',
       author: 'censujiang',
+      //version: packageJson.version,
   };
 
   exports.checkDeviceType = checkDeviceType;

@@ -32,7 +32,7 @@ export const localCookie = {
       (sPath ? '; path=' + sPath : '') +
       (bSecure ? '; secure' : '');
   },
-  removeItem: function (sKey: string, sPath: string, sDomain: string): void | boolean{
+  removeItem: function (sKey: string, sPath: string = '/', sDomain: string = window.location.hostname): void | boolean {
     if (!sKey || !this.hasItem(sKey)) { return false; }
     document.cookie = encodeURIComponent(sKey) + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT' + (sDomain ? '; domain=' + sDomain : '') + (sPath ? '; path=' + sPath : '');
   },

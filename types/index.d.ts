@@ -1,7 +1,6 @@
 export declare const info: {
     name: string;
     author: string;
-    version: string;
 };
 export { localCookie } from './cookie';
 export { url } from './url';

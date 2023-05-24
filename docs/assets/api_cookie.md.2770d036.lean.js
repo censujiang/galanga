@@ -1,1 +1,0 @@
-import{_ as a,o as s,c as o,U as e}from"./chunks/framework.fd4dbc48.js";const F=JSON.parse('{"title":"Cookie","description":"","frontmatter":{},"headers":[],"relativePath":"api/cookie.md","lastUpdated":1679483547000}'),l={name:"api/cookie.md"},n=e("",20),p=[n];function t(c,i,r,d,C,y){return s(),o("div",null,p)}const h=a(l,[["render",t]]);export{F as __pageData,h as default};

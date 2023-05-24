@@ -30,7 +30,7 @@ export const localCookie = {
                 (sPath ? '; path=' + sPath : '') +
                 (bSecure ? '; secure' : '');
     },
-    removeItem: function (sKey, sPath, sDomain) {
+    removeItem: function (sKey, sPath = '/', sDomain = window.location.hostname) {
         if (!sKey || !this.hasItem(sKey)) {
             return false;
         }
