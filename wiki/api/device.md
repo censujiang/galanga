@@ -60,19 +60,25 @@ import { clipboard } from 'galanga'
 
 一共有两个函数，分别是`read`和`write`，分别用于读取和设置剪切板
 
-- [async]`read()`：读取剪切板的内容，返回一个`Promise`，如果读取成功，则返回剪切板的内容，否则返回`null`
+- [async]`read(onlyString)`：读取剪切板的内容，返回一个`Promise`，如果读取成功，则返回剪切板的内容，否则返回`null`。这个函数的参数如下
+  
+  - `onlyString`：是否只读取剪切板中的文本内容，默认为`true`，如果为`false`，则会读取剪切板中的所有内容，包括图片等
 
-- [async]`write(text)`：设置剪切板的内容，返回一个`Promise`，如果设置成功，则返回`true`，否则返回`false`
+- [async]`write(text,onlyString)`：设置剪切板的内容，返回一个`Promise`，如果设置成功，则返回`true`，否则返回`false`。这个函数的参数如下
+
+  - `text`：要设置的内容。
+
+  - `onlyString`：是否只设置文本内容，默认为`true`，如果为`false`，则可以设置任意内容
 
 ::: code-group
 
 ```js [按需引入]
-clipboard.write('Hello World!')
+clipboard.write('Hello World!',true)
 clipboard.read().then(text => console.log(text))
 ```
 
 ```js [全局引入]
-galanga.clipboard.write('Hello World!')
+galanga.clipboard.write('Hello World!',true)
 galanga.clipboard.read().then(text => console.log(text))
 ```
 

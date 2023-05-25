@@ -81,3 +81,49 @@ export const clipboardPermission = {
         }
     }
 };
+//位置权限相关
+export const locationPermission = {
+    //判断是否有位置权限
+    check: async () => {
+        //判断浏览器是否支持Geolocation
+        if (!('geolocation' in navigator)) {
+            return false;
+        }
+        else {
+            //尝试获取位置信息
+            try {
+                const permissionName = "geolocation";
+                const info = await navigator.permissions.query({ name: permissionName });
+                if (info.state === 'granted') {
+                    return true;
+                }
+                else if (info.state === 'prompt') {
+                    return null;
+                }
+                else {
+                    return false;
+                }
+            }
+            catch {
+                return false;
+            }
+        }
+    },
+    //请求位置权限
+    request: async () => {
+        let check = await locationPermission.check();
+        if (check === null) {
+            try {
+                await navigator.geolocation.getCurrentPosition(() => { });
+                return true;
+            }
+            catch {
+                check = await locationPermission.check();
+                return check === true;
+            }
+        }
+        else {
+            return check === true;
+        }
+    }
+};

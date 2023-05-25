@@ -12,5 +12,5 @@ export { checkNull, checkNotNull, strLength, formatBytes, checkPassword, checkEm
 export { checkDeviceType, clipboard } from './device';
 export { updateObjectFromImport } from './object';
 export { filterUniqueByProperty } from './array';
-export { notificationPermission, clipboardPermission } from './permission';
+export { notificationPermission, clipboardPermission, locationPermission } from './permission';
 export { formatNumber } from './number';

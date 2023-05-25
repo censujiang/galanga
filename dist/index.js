@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.4-fix1 (https://github.com/censujiang/galanga)
+ * galanga 0.1.5 (https://github.com/censujiang/galanga)
  * API https://censujiang.galanga.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -268,21 +268,81 @@ const clipboardPermission = {
         }
     }
 };
+//位置权限相关
+const locationPermission = {
+    //判断是否有位置权限
+    check: async () => {
+        //判断浏览器是否支持Geolocation
+        if (!('geolocation' in navigator)) {
+            return false;
+        }
+        else {
+            //尝试获取位置信息
+            try {
+                const permissionName = "geolocation";
+                const info = await navigator.permissions.query({ name: permissionName });
+                if (info.state === 'granted') {
+                    return true;
+                }
+                else if (info.state === 'prompt') {
+                    return null;
+                }
+                else {
+                    return false;
+                }
+            }
+            catch {
+                return false;
+            }
+        }
+    },
+    //请求位置权限
+    request: async () => {
+        let check = await locationPermission.check();
+        if (check === null) {
+            try {
+                await navigator.geolocation.getCurrentPosition(() => { });
+                return true;
+            }
+            catch {
+                check = await locationPermission.check();
+                return check === true;
+            }
+        }
+        else {
+            return check === true;
+        }
+    }
+};
 
 const clipboard = {
-    read: async () => {
+    read: async (onlyString = true) => {
         if (await clipboardPermission.request() == true) {
-            const text = await navigator.clipboard.readText();
-            return text;
+            if (onlyString) {
+                const text = await navigator.clipboard.readText();
+                return text;
+            }
+            else {
+                const result = await navigator.clipboard.read();
+                return result;
+            }
         }
         else {
             return null;
         }
     },
-    write: async (value) => {
+    write: async (value, onlyString = true) => {
         if (await clipboardPermission.request() == true) {
             try {
-                await navigator.clipboard.writeText(value);
+                if (onlyString) {
+                    if (typeof value !== 'string') {
+                        value = JSON.stringify(value);
+                    }
+                    await navigator.clipboard.writeText(value);
+                }
+                else {
+                    await navigator.clipboard.write(value);
+                }
                 return true;
             }
             catch (error) {
@@ -429,8 +489,9 @@ function filterUniqueByProperty(array, prop) {
     });
 }
 
-function formatNumber(value) {
-    return (Math.floor(value * 100) / 100).toString();
+function formatNumber(value, decimal = 2) {
+    const decimalValue = Math.pow(10, decimal);
+    return (Math.floor(value * decimalValue) / decimalValue).toString();
 }
 
 //import * as packageJson from '../package.json'
@@ -453,6 +514,7 @@ exports.formatBytes = formatBytes;
 exports.formatNumber = formatNumber;
 exports.info = info;
 exports.localCookie = localCookie;
+exports.locationPermission = locationPermission;
 exports.notificationPermission = notificationPermission;
 exports.strLength = strLength;
 exports.updateObjectFromImport = updateObjectFromImport;

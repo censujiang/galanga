@@ -1,18 +1,32 @@
 import { clipboardPermission } from './permission';
 export const clipboard = {
-    read: async () => {
+    read: async (onlyString = true) => {
         if (await clipboardPermission.request() == true) {
-            const text = await navigator.clipboard.readText();
-            return text;
+            if (onlyString) {
+                const text = await navigator.clipboard.readText();
+                return text;
+            }
+            else {
+                const result = await navigator.clipboard.read();
+                return result;
+            }
         }
         else {
             return null;
         }
     },
-    write: async (value) => {
+    write: async (value, onlyString = true) => {
         if (await clipboardPermission.request() == true) {
             try {
-                await navigator.clipboard.writeText(value);
+                if (onlyString) {
+                    if (typeof value !== 'string') {
+                        value = JSON.stringify(value);
+                    }
+                    await navigator.clipboard.writeText(value);
+                }
+                else {
+                    await navigator.clipboard.write(value);
+                }
                 return true;
             }
             catch (error) {

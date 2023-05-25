@@ -19,6 +19,7 @@ import { formatNumber } from 'galanga'
 输入的参数如下：
 
 - `number`[number]: 数字
+- `decimal`[number]: 保留的小数位数，默认为2
 
 ::: code-group
 

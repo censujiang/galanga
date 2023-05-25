@@ -69,3 +69,37 @@ await galanga.clipboardPermission.request()
 ```
 
 :::
+
+## `locationPermission`<Badge type="warning" text="beta" />
+
+### 介绍
+
+这是一个函数集合，用于获取或判断是否获取了浏览器的地理位置权限。
+
+### 导入
+
+```js
+import { locationPermission } from 'galanga'
+```
+
+### 使用
+
+此集合有两个子函数，分别如下：
+
+- [async]`check()`: 用于判断是否获取了地理位置权限，此函数是一个异步函数，返回一个布尔值或Null，`true`表示获取了权限，`false`表示没有获取权限或浏览器不支持地理位置权限，`null`表示用户还未做出选择。
+
+- [async]`request()`: 用于请求地理位置权限，此函数为一个异步函数，返回一个布尔值，`true`表示获取了权限，`false`表示用户已经拒绝了权限或浏览器不支持地理位置权限。
+
+::: code-group
+
+```js [按需引入]
+await locationPermission.check()
+await locationPermission.request()
+```
+
+```js [全局引入]
+await galanga.locationPermission.check()
+await galanga.locationPermission.request()
+```
+
+:::

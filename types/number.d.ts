@@ -1,1 +1,1 @@
-export declare function formatNumber(value: number): string;
+export declare function formatNumber(value: number, decimal?: number): string;

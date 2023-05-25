@@ -1,3 +1,4 @@
-export function formatNumber(value) {
-    return (Math.floor(value * 100) / 100).toString();
+export function formatNumber(value, decimal = 2) {
+    const decimalValue = Math.pow(10, decimal);
+    return (Math.floor(value * decimalValue) / decimalValue).toString();
 }
