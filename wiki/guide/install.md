@@ -60,7 +60,7 @@ console.log(info)
 引入完成后，您可以在项目中使用全部功能（目前暂不支持将部分函数单独引入至项目内）：
 
 ```js
-console.log(galanga.name)
+console.log(galanga.info)
 ```
 
 我们更推荐使用NPM项目的方式引入山奈，因为这样不仅可以更好地管理依赖，还可以使用您的打包工具的摇树功能动态修剪您的代码。
