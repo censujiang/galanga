@@ -31,15 +31,15 @@ cnpm install galanga
 ```js
 import galanga from 'galanga'
 
-console.log(galanga.name)
+console.log(galanga.info)
 ```
 
 ### 按需引入
 
 ```js
-import { name } from 'galanga'
+import { info } from 'galanga'
 
-console.log(name)
+console.log(info)
 ```
 我们在后文的使用示例中，基本上都是使用这种方式引入山奈的。
 
