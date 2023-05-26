@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.5-fix1 (https://github.com/censujiang/galanga)
+ * galanga 0.1.6 (https://github.com/censujiang/galanga)
  * API https://censujiang.galanga.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -359,7 +359,7 @@
           }
       }
   };
-  function checkDeviceType(types = ['os', 'browser', 'device', 'platform'], return_string = false) {
+  function checkDeviceType(types = ['os', 'browser', 'device', 'platform']) {
       const ua = navigator.userAgent;
       function getOS() {
           if (/Windows/i.test(ua)) {
@@ -456,12 +456,16 @@
           device: getDevice(),
           platform: platform
       };
-      if (return_string) {
-          if (types.length === 1) {
-              return result[types[0]];
-          }
+      if (typeof types === 'string') {
+          return result[types];
       }
-      return result;
+      else {
+          const info = {};
+          types.forEach(type => {
+              info[type] = result[type];
+          });
+          return info;
+      }
   }
 
   //将importObject中的值更新到object中，如果importObject中的值为空，则不更新

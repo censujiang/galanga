@@ -18,9 +18,7 @@ import { checkDeviceType } from 'galanga'
 
 输入的参数如下：
 
-- `type`：要检查的类型，此参数为一个数组，默认为`['browser', 'device', 'os', 'platform']`，可选值为`browser`、`device`、`os`、`platform`，分别表示浏览器类型、设备类型、系统类型、平台类型
-
-- `return_string`：是否返回字符串，默认为`false`，如果为`true`并且数组的只有一个值，则返回字符串，否则返回一个对象
+- `type`：要检查的类型，此参数为一个数组，默认为`['browser', 'device', 'os', 'platform']`，可选值为`browser`、`device`、`os`、`platform`，分别表示浏览器类型、设备类型、系统类型、平台类型。如果只想检查其中的某一个类型，则可以传入一个字符串，如`'browser'`，如果想检查多个类型，则可以传入一个数组，如`['browser', 'device']`。
 
 默认情况下，返回的是一个对象，包含了浏览器类型、设备类型、系统类型，如下：
 
@@ -33,6 +31,12 @@ import { checkDeviceType } from 'galanga'
 }
 ```
 
+如果只传入一个字符串，那么返回的是一个字符串，比如你只想检查浏览器类型，如`'browser'`，那么返回的就是浏览器类型，如下：
+
+```js
+'chrome'
+```
+
 ::: code-group
 
 ```js [按需引入]
@@ -41,6 +45,22 @@ checkDeviceType()
 
 ```js [全局引入]
 galanga.checkDeviceType()
+```
+
+:::
+
+::: details 迁移指南
+
+### `v0.1.6`之前
+
+从`v0.1.6`开始，`checkDeviceType`函数的参数不再包含`return_string`，而是直接传入一个字符串或者数组，如果传入的是一个字符串，则返回一个字符串，如果传入的是一个数组，则返回一个对象，请您检查您的业务中是否使用了`return_string`参数，如果使用了，请您修改为新的使用方式，例如
+
+```js
+// 旧的使用方式
+checkDeviceType(['browser'], true)
+
+// 新的使用方式
+checkDeviceType('browser')
 ```
 
 :::

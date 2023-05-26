@@ -39,7 +39,7 @@ export const clipboard = {
         }
     }
 };
-export function checkDeviceType(types = ['os', 'browser', 'device', 'platform'], return_string = false) {
+export function checkDeviceType(types = ['os', 'browser', 'device', 'platform']) {
     const ua = navigator.userAgent;
     function getOS() {
         if (/Windows/i.test(ua)) {
@@ -136,10 +136,14 @@ export function checkDeviceType(types = ['os', 'browser', 'device', 'platform'],
         device: getDevice(),
         platform: platform
     };
-    if (return_string) {
-        if (types.length === 1) {
-            return result[types[0]];
-        }
+    if (typeof types === 'string') {
+        return result[types];
     }
-    return result;
+    else {
+        const info = {};
+        types.forEach(type => {
+            info[type] = result[type];
+        });
+        return info;
+    }
 }
