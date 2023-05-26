@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.5 (https://github.com/censujiang/galanga)
+ * galanga 0.1.5-fix1 (https://github.com/censujiang/galanga)
  * API https://censujiang.galanga.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -359,82 +359,77 @@
           }
       }
   };
-  function checkDeviceType(types = ['os', 'browser', 'device'], return_string = false) {
+  function checkDeviceType(types = ['os', 'browser', 'device', 'platform'], return_string = false) {
       const ua = navigator.userAgent;
       function getOS() {
-          const osRegex = /(HarmonyOS)\/([\d.]+)|(Android);?[\s\/]+([\d.]+)?|(iPad).*OS\s([\d_]+)|(iPod)(.*OS\s([\d_]+))?|(iPhone\sOS)\s([\d_]+)|(Windows\sPhone)\sOS\s([\d.]+)|(Macintosh);.*Mac\sOS\sX\s([\d_]+)|(Windows\sNT)\s([\d.]+)|(Linux)\s?([\d.]+)?/;
-          const matches = ua.match(osRegex);
-          if (matches) {
-              if (matches[1]) {
-                  return 'harmonyos';
-              }
-              else if (matches[3]) {
-                  return 'android';
-              }
-              else if (matches[5] || matches[7] || matches[9]) {
-                  return 'ios';
-              }
-              else if (matches[11]) {
-                  return 'wp';
-              }
-              else if (matches[13]) {
-                  return 'mac';
-              }
-              else if (matches[15]) {
-                  return 'windows';
-              }
-              else if (matches[17]) {
-                  return 'linux';
-              }
+          if (/Windows/i.test(ua)) {
+              return 'windows';
+          }
+          else if (/Macintosh/i.test(ua)) {
+              return 'mac';
+          }
+          else if (/Linux/i.test(ua)) {
+              return 'linux';
+          }
+          else if (/HarmonyOS/i.test(ua)) {
+              return 'harmonyos';
+          }
+          else if (/Android/i.test(ua)) {
+              return 'android';
+          }
+          else if (/iPhone/i.test(ua) || /iPod/i.test(ua) || /iPad/i.test(ua)) {
+              return 'ios';
           }
           return 'other';
       }
       function getBrowser() {
-          const browserRegex = /(MicroMessenger)\/([\d.]+)|(QQ)\/([\d.]+)|(UCBrowser)\/([\d.]+)|(360SE)|(360EE)|(Maxthon)|(TaoBrowser)|(TheWorld)|(SE)\s([\d.]+)|(LBBROWSER)|(Chrome)\/([\d.]+)|(Firefox)\/([\d.]+)|(Opera).+Version\/([\d.]+)|(Safari)\/([\d.]+)|(Trident)\/([\d.]+)/;
-          const matches = ua.match(browserRegex);
-          if (matches) {
-              if (matches[1]) {
-                  return 'wechat';
-              }
-              else if (matches[3]) {
-                  return 'qq';
-              }
-              else if (matches[5]) {
-                  return 'uc';
-              }
-              else if (matches[6] || matches[7]) {
-                  return '360';
-              }
-              else if (matches[8]) {
-                  return 'maxthon';
-              }
-              else if (matches[9]) {
-                  return 'taobao';
-              }
-              else if (matches[10]) {
-                  return 'theworld';
-              }
-              else if (matches[12]) {
-                  return 'sogou';
-              }
-              else if (matches[13]) {
-                  return 'liebao';
-              }
-              else if (matches[14]) {
-                  return 'chrome';
-              }
-              else if (matches[15]) {
-                  return 'firefox';
-              }
-              else if (matches[16]) {
-                  return 'opera';
-              }
-              else if (matches[17]) {
-                  return 'safari';
-              }
-              else if (matches[18]) {
-                  return 'ie';
-              }
+          if (/MicroMessenger/i.test(ua)) {
+              return 'wechat';
+          }
+          else if (/QQ/i.test(ua)) {
+              return 'qq';
+          }
+          else if (/Alipay/i.test(ua)) {
+              return 'alipay';
+          }
+          else if (/Weibo/i.test(ua)) {
+              return 'weibo';
+          }
+          else if (/DingTalk/i.test(ua)) {
+              return 'dingtalk';
+          }
+          else if (/Taobao/i.test(ua)) {
+              return 'taobao';
+          }
+          else if (/Tmall/i.test(ua)) {
+              return 'tmall';
+          }
+          else if (/Edge/i.test(ua)) {
+              return 'edge';
+          }
+          else if (/Opera/i.test(ua)) {
+              return 'opera';
+          }
+          else if (/360SE/i.test(ua)) {
+              return '360';
+          }
+          else if (/UCBrowser/i.test(ua)) {
+              return 'uc';
+          }
+          else if (/Baidu/i.test(ua)) {
+              return 'baidu';
+          }
+          else if (/Chrome/i.test(ua)) {
+              return 'chrome';
+          }
+          else if (/Safari/i.test(ua)) {
+              return 'safari';
+          }
+          else if (/Firefox/i.test(ua)) {
+              return 'firefox';
+          }
+          else if (/MSIE/i.test(ua)) {
+              return 'ie';
           }
           return 'other';
       }
@@ -454,10 +449,12 @@
           }
           return 'other';
       }
+      const platform = 'web';
       const result = {
           os: getOS(),
           browser: getBrowser(),
-          device: getDevice()
+          device: getDevice(),
+          platform: platform
       };
       if (return_string) {
           if (types.length === 1) {

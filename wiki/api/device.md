@@ -18,7 +18,7 @@ import { checkDeviceType } from 'galanga'
 
 输入的参数如下：
 
-- `type`：要检查的类型，此参数为一个数组，默认为`['browser', 'device', 'os']`，可选值为`browser`、`device`、`os`，分别表示浏览器类型、设备类型、系统类型
+- `type`：要检查的类型，此参数为一个数组，默认为`['browser', 'device', 'os', 'platform']`，可选值为`browser`、`device`、`os`、`platform`，分别表示浏览器类型、设备类型、系统类型、平台类型
 
 - `return_string`：是否返回字符串，默认为`false`，如果为`true`并且数组的只有一个值，则返回字符串，否则返回一个对象
 
@@ -26,9 +26,10 @@ import { checkDeviceType } from 'galanga'
 
 ```js
 {
-  browser: 'Chrome',
-  device: 'PC',
-  os: 'Windows'
+  browser: 'chrome',
+  device: 'pc',
+  os: 'windows',
+  platform: 'web'
 }
 ```
 
