@@ -123,12 +123,14 @@ export function checkDeviceType(types: string[] | string = ['os', 'browser', 'de
 
   const platform = 'web'
 
+  //定义一个result对象，用于存储检测结果
+  //通过检查types数组，来确定需要获取的信息，不需要的信息不获取也不存储空置（直接跳过）
   const result: DeviceInfo = {
-    os: getOS(),
-    browser: getBrowser(),
-    device: getDevice(),
-    platform: platform
-  };
+    os: types.includes('os') ? getOS() : '',
+    browser: types.includes('browser') ? getBrowser() : '',
+    device: types.includes('device') ? getDevice() : '',
+    platform: types.includes('platform') ? platform : '',
+  }
 
   if (typeof types === 'string') {
     return result[types];
