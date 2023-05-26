@@ -16,3 +16,14 @@ export function updateObjectFromImport(importObject, object) {
     }
     return object;
 }
+//根据输入的数组，将原有的object中的数组摇树，生成新的object
+//例如有一个object为{a:1,b:2,c:3,d:4,e:5,f:6,g:7,h:8,i:9,j:10},数组为['a','b','c','d']，则返回的object为{a:1,b:2,c:3,d:4}
+export function shakeObject(object, array) {
+    let result = {};
+    array.forEach(key => {
+        if (object.hasOwnProperty(key)) {
+            result[key] = object[key];
+        }
+    });
+    return result;
+}

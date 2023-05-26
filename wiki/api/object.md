@@ -52,3 +52,35 @@ newObject = galanga.updateObjectFromImport(importObject, newObject)
 ```
 
 :::
+
+## `shakeObject`
+
+### 介绍
+
+通过一个数组，将对象中的某些属性保留，其余属性删除。（也叫做摇树）
+
+### 导入
+
+```js
+import { shakeObject } from 'galanga'
+```
+
+### 使用
+
+输入的参数如下：
+
+- `object`[object]: 要摇树的对象
+
+- `array`[array]: 要保留的属性名组成的数组
+
+::: code-group
+
+```js [按需引入]
+object = shakeObject(object, array)
+```
+
+```js [全局引入]
+object = galanga.shakeObject(object, array)
+```
+
+:::

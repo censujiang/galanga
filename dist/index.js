@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.6 (https://github.com/censujiang/galanga)
+ * galanga 0.1.6-fix.1 (https://github.com/censujiang/galanga)
  * API https://censujiang.galanga.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -315,6 +315,35 @@ const locationPermission = {
     }
 };
 
+//将importObject中的值更新到object中，如果importObject中的值为空，则不更新
+function updateObjectFromImport(importObject, object) {
+    for (let key in object) {
+        if (importObject.hasOwnProperty(key)) {
+            if (typeof object[key] === 'object' && typeof importObject[key] === 'object') {
+                updateObjectFromImport(importObject[key], object[key]);
+            }
+            else {
+                //再根据是否为空来判断是否要更新
+                if (checkNotNull(importObject[key])) {
+                    object[key] = importObject[key];
+                }
+            }
+        }
+    }
+    return object;
+}
+//根据输入的数组，将原有的object中的数组摇树，生成新的object
+//例如有一个object为{a:1,b:2,c:3,d:4,e:5,f:6,g:7,h:8,i:9,j:10},数组为['a','b','c','d']，则返回的object为{a:1,b:2,c:3,d:4}
+function shakeObject(object, array) {
+    let result = {};
+    array.forEach(key => {
+        if (object.hasOwnProperty(key)) {
+            result[key] = object[key];
+        }
+    });
+    return result;
+}
+
 const clipboard = {
     read: async (onlyString = true) => {
         if (await clipboardPermission.request() == true) {
@@ -456,30 +485,8 @@ function checkDeviceType(types = ['os', 'browser', 'device', 'platform']) {
         return result[types];
     }
     else {
-        const info = {};
-        types.forEach(type => {
-            info[type] = result[type];
-        });
-        return info;
+        return shakeObject(result, types);
     }
-}
-
-//将importObject中的值更新到object中，如果importObject中的值为空，则不更新
-function updateObjectFromImport(importObject, object) {
-    for (let key in object) {
-        if (importObject.hasOwnProperty(key)) {
-            if (typeof object[key] === 'object' && typeof importObject[key] === 'object') {
-                updateObjectFromImport(importObject[key], object[key]);
-            }
-            else {
-                //再根据是否为空来判断是否要更新
-                if (checkNotNull(importObject[key])) {
-                    object[key] = importObject[key];
-                }
-            }
-        }
-    }
-    return object;
 }
 
 // 去除数组中重复的对象，将 length 大的数组保留，length 小的数组去掉
@@ -501,6 +508,7 @@ const info = {
     name: 'galanga',
     author: 'censujiang',
     //version: packageJson.version,
+    type: 'main',
 };
 
 exports.checkDeviceType = checkDeviceType;
@@ -517,6 +525,7 @@ exports.info = info;
 exports.localCookie = localCookie;
 exports.locationPermission = locationPermission;
 exports.notificationPermission = notificationPermission;
+exports.shakeObject = shakeObject;
 exports.strLength = strLength;
 exports.updateObjectFromImport = updateObjectFromImport;
 exports.url = url;

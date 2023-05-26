@@ -1,4 +1,5 @@
 import { clipboardPermission } from './permission'
+import { shakeObject } from './object'
 
 export const clipboard = {
   read: async (onlyString = true) => {
@@ -131,11 +132,7 @@ export function checkDeviceType(types: string[] | string = ['os', 'browser', 'de
 
   if (typeof types === 'string') {
     return result[types];
-  }else{
-    const info: object = {};
-    types.forEach(type => {
-      info[type] = result[type];
-    });
-    return info;
+  } else {
+    return shakeObject(result, types);
   }
 }
