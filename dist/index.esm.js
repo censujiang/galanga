@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.6-fix.2 (https://github.com/censujiang/galanga)
+ * galanga 0.1.7 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -358,13 +358,10 @@ const clipboard = {
             return null;
         }
     },
-    write: async (value, onlyString = true) => {
+    write: async (value) => {
         if (await clipboardPermission.request() == true) {
             try {
-                if (onlyString) {
-                    if (typeof value !== 'string') {
-                        value = JSON.stringify(value);
-                    }
+                if (typeof value === 'string') {
                     await navigator.clipboard.writeText(value);
                 }
                 else {

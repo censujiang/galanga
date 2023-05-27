@@ -1,6 +1,6 @@
 export declare const clipboard: {
     read: (onlyString?: boolean) => Promise<string | ClipboardItems>;
-    write: (value: any, onlyString?: boolean) => Promise<boolean>;
+    write: (value: any) => Promise<boolean>;
 };
 interface DeviceInfo {
     os: string;

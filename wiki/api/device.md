@@ -85,22 +85,36 @@ import { clipboard } from 'galanga'
   
   - `onlyString`：是否只读取剪切板中的文本内容，默认为`true`，如果为`false`，则会读取剪切板中的所有内容，包括图片等
 
-- [async]`write(text,onlyString)`：设置剪切板的内容，返回一个`Promise`，如果设置成功，则返回`true`，否则返回`false`。这个函数的参数如下
+- [async]`write(value)`：设置剪切板的内容，返回一个`Promise`，如果设置成功，则返回`true`，否则返回`false`。这个函数的参数如下
 
-  - `text`：要设置的内容。
-
-  - `onlyString`：是否只设置文本内容，默认为`true`，如果为`false`，则可以设置任意内容
+  - `value`：要设置的内容。
 
 ::: code-group
 
 ```js [按需引入]
-clipboard.write('Hello World!',true)
+clipboard.write('Hello World!')
 clipboard.read().then(text => console.log(text))
 ```
 
 ```js [全局引入]
-galanga.clipboard.write('Hello World!',true)
+galanga.clipboard.write('Hello World!')
 galanga.clipboard.read().then(text => console.log(text))
+```
+
+:::
+
+::: details 迁移指南
+
+### `v0.1.7`之前
+
+从`v0.1.7`开始，`clipboard.write()`函数的参数不再包含`onlyString`，而是智能判断您传入的类型，例如`String`类型的参数会被判断为进行writeTxt操作，其他类型的参数会被判断为进行write操作，请您检查您的业务中是否使用了`onlyString`参数，如果使用了，请您修改为新的使用方式，例如
+
+```js
+// 旧的使用方式
+clipboard.write('Hello World!',true)
+
+// 新的使用方式
+clipboard.write('Hello World!')
 ```
 
 :::

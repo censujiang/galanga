@@ -16,13 +16,10 @@ export const clipboard = {
             return null;
         }
     },
-    write: async (value, onlyString = true) => {
+    write: async (value) => {
         if (await clipboardPermission.request() == true) {
             try {
-                if (onlyString) {
-                    if (typeof value !== 'string') {
-                        value = JSON.stringify(value);
-                    }
+                if (typeof value === 'string') {
                     await navigator.clipboard.writeText(value);
                 }
                 else {
