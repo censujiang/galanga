@@ -123,6 +123,14 @@ export function checkDeviceType(types: string[] | string = ['os', 'browser', 'de
 
   const platform = 'web'
 
+  let isString = false;
+  let originTypes:String;
+  if (typeof types === 'string') {
+    isString = true;
+    types = [types];
+    originTypes = types[0];
+  }
+
   //定义一个result对象，用于存储检测结果
   //通过检查types数组，来确定需要获取的信息，不需要的信息不获取也不存储空置（直接跳过）
   const result: DeviceInfo = {
@@ -133,7 +141,7 @@ export function checkDeviceType(types: string[] | string = ['os', 'browser', 'de
   }
 
   if (typeof types === 'string') {
-    return result[types];
+    return result[originTypes as keyof DeviceInfo];
   } else {
     return shakeObject(result, types);
   }
