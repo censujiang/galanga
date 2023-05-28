@@ -19,9 +19,9 @@ export const clipboard = {
   write: async (value: any) => {
     if (await clipboardPermission.request() == true) {
       try {
-        if(typeof value === 'string'){
+        if (typeof value === 'string') {
           await navigator.clipboard.writeText(value);
-        }else{
+        } else {
           await navigator.clipboard.write(value);
         }
         return true;
@@ -121,7 +121,7 @@ export function checkDeviceType(types: string[] | string = ['os', 'browser', 'de
   const platform = 'web'
 
   let isString = false;
-  let originTypes:String;
+  let originTypes: String;
   if (typeof types === 'string') {
     isString = true;
     types = [types];
@@ -137,7 +137,7 @@ export function checkDeviceType(types: string[] | string = ['os', 'browser', 'de
     platform: types.includes('platform') ? platform : '',
   }
 
-  if (typeof types === 'string') {
+  if (isString === true) {
     return result[originTypes as keyof DeviceInfo];
   } else {
     return shakeObject(result, types);

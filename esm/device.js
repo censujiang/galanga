@@ -143,7 +143,7 @@ export function checkDeviceType(types = ['os', 'browser', 'device', 'platform'])
         device: types.includes('device') ? getDevice() : '',
         platform: types.includes('platform') ? platform : '',
     };
-    if (typeof types === 'string') {
+    if (isString === true) {
         return result[originTypes];
     }
     else {

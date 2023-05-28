@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.7 (https://github.com/censujiang/galanga)
+ * galanga 0.1.7-fix1 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -470,8 +470,10 @@ function checkDeviceType(types = ['os', 'browser', 'device', 'platform']) {
         return 'other';
     }
     const platform = 'web';
+    let isString = false;
     let originTypes;
     if (typeof types === 'string') {
+        isString = true;
         types = [types];
         originTypes = types[0];
     }
@@ -483,7 +485,7 @@ function checkDeviceType(types = ['os', 'browser', 'device', 'platform']) {
         device: types.includes('device') ? getDevice() : '',
         platform: types.includes('platform') ? platform : '',
     };
-    if (typeof types === 'string') {
+    if (isString === true) {
         return result[originTypes];
     }
     else {
