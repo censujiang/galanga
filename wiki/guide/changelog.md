@@ -1,5 +1,13 @@
 # 更新日志
 
+## 0.1.8 (2023-6-1)
+
+- 新增`afterTime`函数，用于获取当前时间之后的时间。
+- 给`url`函数集合新增了`setHash`函数，用于设置URL的hash值。
+- 给`url`函数集合新增了`setPath`函数，用于设置URL的路径。
+- 给`url`函数集合新增了`setQuery`函数，用于设置URL的参数。
+- 修复`localCookie`函数的bug，现在可以正常使用了。
+
 ## 0.1.7 (2023-5-27)
 
 - 修复了`checkDeviceType`函数的bug，现在可以正常使用了。

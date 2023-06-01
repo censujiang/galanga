@@ -17,3 +17,4 @@ export { updateObjectFromImport, shakeObject } from './object';
 export { filterUniqueByProperty } from './array';
 export { notificationPermission, clipboardPermission, locationPermission } from './permission';
 export { formatNumber } from './number';
+export { afterTime } from './date';

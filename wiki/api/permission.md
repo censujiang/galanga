@@ -1,4 +1,4 @@
-# 权限Permission
+# Permission
 
 山奈提供了一些API用于您去获取或判断是否获取了一些浏览器权限。
 

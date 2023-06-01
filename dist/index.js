@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.7-fix1 (https://github.com/censujiang/galanga)
+ * galanga 0.1.8 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -9,41 +9,43 @@
 
 //操作cookie的方法
 const localCookie = {
-    getItem: function (sKey) {
+    getItem: (sKey) => {
         return decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(sKey).replace(/[-.+*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
     },
-    setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
-        if (!sKey || /^(?:expires|max-age|path|domain|secure)$/i.test(sKey)) {
-            return;
+    setItem: (sKey, sValue, sPath = '/', sDomain = window.location.hostname, vEnd, bSecure) => {
+        if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
+            return false;
         }
         let sExpires = '';
         if (vEnd) {
-            switch (vEnd.constructor) {
-                case Number:
-                    sExpires = vEnd === Infinity ? '; expires=Fri, 31 Dec 9999 23:59:59 GMT' : '; max-age=' + vEnd;
-                    break;
-                case String:
-                    sExpires = '; expires=' + vEnd;
-                    break;
-                case Date:
-                    sExpires = '; expires=' + vEnd.toUTCString();
-                    break;
+            if (typeof vEnd === 'number') {
+                const dExpires = new Date();
+                dExpires.setTime(dExpires.getTime() + (vEnd * 24 * 60 * 60 * 1000));
+                sExpires = '; expires=' + dExpires.toUTCString();
+            }
+            else if (typeof vEnd === 'string') {
+                sExpires = '; expires=' + vEnd;
+            }
+            else if (vEnd instanceof Date) {
+                sExpires = '; expires=' + vEnd.toUTCString();
             }
         }
-        document.cookie =
-            encodeURIComponent(sKey) +
-                '=' +
-                encodeURIComponent(sValue) +
-                sExpires +
-                (sDomain ? '; domain=' + sDomain : '') +
-                (sPath ? '; path=' + sPath : '') +
-                (bSecure ? '; secure' : '');
+        document.cookie = encodeURIComponent(sKey) + '=' + encodeURIComponent(sValue) +
+            sExpires +
+            (sDomain ? '; domain=' + sDomain : '') +
+            (sPath ? '; path=' + sPath : '') +
+            (bSecure ? '; secure' : '');
+        return true;
     },
-    removeItem: function (sKey, sPath = '/', sDomain = window.location.hostname) {
-        if (!sKey || !this.hasItem(sKey)) {
+    removeItem: (sKey, sPath = '/', sDomain = window.location.hostname) => {
+        if (!sKey || !localCookie.hasItem(sKey)) {
             return false;
         }
-        document.cookie = encodeURIComponent(sKey) + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT' + (sDomain ? '; domain=' + sDomain : '') + (sPath ? '; path=' + sPath : '');
+        document.cookie = encodeURIComponent(sKey) +
+            '=; expires=Thu, 01 Jan 1970 00:00:00 UTC' +
+            (sDomain ? '; domain=' + sDomain : '') +
+            (sPath ? '; path=' + sPath : '');
+        return true;
     },
     hasItem: function (sKey) {
         return (new RegExp('(?:^|;\\s*)' + encodeURIComponent(sKey).replace(/[-.+*]/g, '\\$&') + '\\s*\\=')).test(document.cookie);
@@ -80,6 +82,42 @@ const url = {
     },
     getPath() {
         return window.location.pathname;
+    },
+    setPath(path) {
+        try {
+            //动态设置路由，不能使用location.href，否则会刷新页面
+            window.history.pushState({}, '', path);
+            return true;
+        }
+        catch (e) {
+            console.log(e);
+            return false;
+        }
+    },
+    setHash(hash) {
+        try {
+            window.location.hash = hash;
+            return true;
+        }
+        catch (e) {
+            console.log(e);
+            return false;
+        }
+    },
+    setQuery(name, value) {
+        try {
+            //首先获取当前url参数
+            const params = new URLSearchParams(window.location.search);
+            //设置新的参数
+            params.set(name, value);
+            //重新设置url参数
+            window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
+            return true;
+        }
+        catch (e) {
+            console.log(e);
+            return false;
+        }
     },
 };
 
@@ -508,6 +546,33 @@ function formatNumber(value, decimal = 2) {
     return (Math.floor(value * decimalValue) / decimalValue).toString();
 }
 
+//返回离现在多少时间后的时间
+//输入参数为毫秒数或者Date类型的东西，返回值为Date类型
+function afterTime(time, backType = 'Date') {
+    let result;
+    if (typeof time === 'number') {
+        result = new Date(Date.now() + time);
+    }
+    else if (typeof time === 'string') {
+        result = new Date(Date.now() + Number(time));
+    }
+    else if (time instanceof Date) {
+        result = new Date(Date.now() + time.getTime());
+    }
+    else {
+        throw new Error('输入参数类型错误');
+    }
+    if (backType.toLowerCase() === 'date') {
+        return result;
+    }
+    else if (backType.toLowerCase() === 'number') {
+        return result.getTime();
+    }
+    else if (backType.toLowerCase() === 'string') {
+        return result.toISOString();
+    }
+}
+
 //import * as packageJson from '../package.json'
 //导出自己的名字
 const info = {
@@ -517,6 +582,7 @@ const info = {
     type: 'main',
 };
 
+exports.afterTime = afterTime;
 exports.checkDeviceType = checkDeviceType;
 exports.checkEmail = checkEmail;
 exports.checkNotNull = checkNotNull;

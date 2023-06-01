@@ -62,3 +62,51 @@ galanga.url.getPath()
 ```
 
 :::
+
+#### 设置URL的参数
+
+设置 URL 的参数，如果参数不存在，则添加参数。操作成功返回 `true`，否则返回 `false`。
+
+::: code-group
+
+```js [按需引入]
+url.setQuery('name', 'galanga')
+```
+
+```js [全局引入]
+galanga.url.setQuery('name', 'galanga')
+```
+
+:::
+
+#### 设置URL的hash
+
+设置 URL 的 hash，如果 hash 不存在，则添加 hash。操作成功返回 `true`，否则返回 `false`。
+
+::: code-group
+
+```js [按需引入]
+url.setHash('galanga')
+```
+
+```js [全局引入]
+galanga.url.setHash('galanga')
+```
+
+:::
+
+#### 设置URL的路径
+
+设置 URL 的路径，如果路径不存在，则添加路径。操作成功返回 `true`，否则返回 `false`。
+
+::: code-group
+
+```js [按需引入]
+url.setPath('galanga')
+```
+
+```js [全局引入]
+galanga.url.setPath('galanga')
+```
+
+:::

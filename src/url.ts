@@ -1,5 +1,3 @@
-import { checkNull } from "./string";
-
 export const url = {
 	getQuery(name: string) {
 		const result = window.location.search.match(new RegExp('[?&]' + name + '=([^&]+)', 'i'));
@@ -19,31 +17,37 @@ export const url = {
 		return window.location.pathname;
 	},
 	setPath(path: string) {
-		//动态设置路由，不能使用location.href，否则会刷新页面
-		window.history.pushState({}, '', path);
+		try {
+			//动态设置路由，不能使用location.href，否则会刷新页面
+			window.history.pushState({}, '', path);
+			return true;
+		} catch (e) {
+			console.log(e);
+			return false;
+		}
+
 	},
 	setHash(hash: string) {
-		window.location.hash = hash;
+		try {
+			window.location.hash = hash;
+			return true;
+		} catch (e) {
+			console.log(e);
+			return false;
+		}
 	},
 	setQuery(name: string, value: string) {
-		//首先获取当前path
-		let path = this.getPath();
-		//判断是否已经有查询参数
-		const query = this.getQuery(name);
-		if (checkNull(query)) {
-			//path是否有查询参数
-			if (path.indexOf('?') > -1) {
-				path += `&${name}=${value}`;
-			} else {
-				path += `?${name}=${value}`;
-			}
-		} else {
-			//找到原有的查询参数的全部内容
-			const reg = new RegExp(`(${name}=)([^&]*)`, 'i');
-			//替换原有的查询参数
-			path = path.replace(reg, `$1${value}`);
+		try {
+			//首先获取当前url参数
+			const params = new URLSearchParams(window.location.search);
+			//设置新的参数
+			params.set(name, value);
+			//重新设置url参数
+			window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
+			return true;
+		} catch (e) {
+			console.log(e);
+			return false;
 		}
-		//设置新的path
-		this.setPath(path);
-	}
+	},
 };
