@@ -35,7 +35,8 @@ export const localCookie = {
         document.cookie = encodeURIComponent(sKey) +
             '=; expires=Thu, 01 Jan 1970 00:00:00 UTC' +
             (sDomain ? '; domain=' + sDomain : '') +
-            (sPath ? '; path=' + sPath : '');
+            (sPath ? '; path=' + sPath : '') +
+            '; secure';
         return true;
     },
     hasItem: function (sKey) {

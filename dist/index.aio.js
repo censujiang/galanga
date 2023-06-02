@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.8 (https://github.com/censujiang/galanga)
+ * galanga 0.1.8-fix1 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -48,7 +48,8 @@
           document.cookie = encodeURIComponent(sKey) +
               '=; expires=Thu, 01 Jan 1970 00:00:00 UTC' +
               (sDomain ? '; domain=' + sDomain : '') +
-              (sPath ? '; path=' + sPath : '');
+              (sPath ? '; path=' + sPath : '') +
+              '; secure';
           return true;
       },
       hasItem: function (sKey) {
