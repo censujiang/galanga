@@ -4,7 +4,7 @@ export declare const info: {
     type: string;
 };
 export { localCookie } from './cookie';
-export { url } from './url';
+export { url, getPreURL } from './url';
 export { checkNull, checkNotNull, strLength, formatBytes, checkPassword, checkEmail } from './string';
 export { checkDeviceType, clipboard } from './device';
 export { updateObjectFromImport, shakeObject } from './object';

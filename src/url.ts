@@ -1,3 +1,5 @@
+import { checkNotNull } from './string';
+
 export const url = {
 	getQuery(name: string) {
 		const result = window.location.search.match(new RegExp('[?&]' + name + '=([^&]+)', 'i'));
@@ -51,3 +53,13 @@ export const url = {
 		}
 	},
 };
+
+//获取上一页的url
+export function getPreURL() {
+	const back = window.history.state.back
+	if (checkNotNull(back)) {
+		return back
+	} else {
+		return document.referrer
+	}
+}

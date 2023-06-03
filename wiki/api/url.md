@@ -110,3 +110,29 @@ galanga.url.setPath('galanga')
 ```
 
 :::
+
+
+## `getPreURL`
+
+获取上一个 URL。
+
+### 导入
+
+```js
+import { getPreURL } from 'galanga'
+```
+
+### 使用
+
+::: code-group
+
+```js [按需引入]
+getPreURL()
+```
+
+```js [全局引入]
+galanga.getPreURL()
+```
+
+:::
+

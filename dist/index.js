@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.8-fix1 (https://github.com/censujiang/galanga)
+ * galanga 0.1.9 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -64,62 +64,6 @@ const localCookie = {
             this.removeItem(keys[i]);
         }
     }
-};
-
-const url = {
-    getQuery(name) {
-        const result = window.location.search.match(new RegExp('[?&]' + name + '=([^&]+)', 'i'));
-        if (result == null || result.length < 1) {
-            return '';
-        }
-        return result[1];
-    },
-    getHash(name) {
-        const result = window.location.hash.match(new RegExp('[#&]' + name + '=([^&]+)', 'i'));
-        if (result == null || result.length < 1) {
-            return '';
-        }
-        return result[1];
-    },
-    getPath() {
-        return window.location.pathname;
-    },
-    setPath(path) {
-        try {
-            //动态设置路由，不能使用location.href，否则会刷新页面
-            window.history.pushState({}, '', path);
-            return true;
-        }
-        catch (e) {
-            console.log(e);
-            return false;
-        }
-    },
-    setHash(hash) {
-        try {
-            window.location.hash = hash;
-            return true;
-        }
-        catch (e) {
-            console.log(e);
-            return false;
-        }
-    },
-    setQuery(name, value) {
-        try {
-            //首先获取当前url参数
-            const params = new URLSearchParams(window.location.search);
-            //设置新的参数
-            params.set(name, value);
-            //重新设置url参数
-            window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
-            return true;
-        }
-        catch (e) {
-            console.log(e);
-            return false;
-        }
-    },
 };
 
 // 检查输入的值是否为空
@@ -222,6 +166,72 @@ types = ['number', 'lowercase', 'uppercase', 'special'], minTypes = 2, maxTypes 
 function checkEmail(email) {
     const reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
     return reg.test(email);
+}
+
+const url = {
+    getQuery(name) {
+        const result = window.location.search.match(new RegExp('[?&]' + name + '=([^&]+)', 'i'));
+        if (result == null || result.length < 1) {
+            return '';
+        }
+        return result[1];
+    },
+    getHash(name) {
+        const result = window.location.hash.match(new RegExp('[#&]' + name + '=([^&]+)', 'i'));
+        if (result == null || result.length < 1) {
+            return '';
+        }
+        return result[1];
+    },
+    getPath() {
+        return window.location.pathname;
+    },
+    setPath(path) {
+        try {
+            //动态设置路由，不能使用location.href，否则会刷新页面
+            window.history.pushState({}, '', path);
+            return true;
+        }
+        catch (e) {
+            console.log(e);
+            return false;
+        }
+    },
+    setHash(hash) {
+        try {
+            window.location.hash = hash;
+            return true;
+        }
+        catch (e) {
+            console.log(e);
+            return false;
+        }
+    },
+    setQuery(name, value) {
+        try {
+            //首先获取当前url参数
+            const params = new URLSearchParams(window.location.search);
+            //设置新的参数
+            params.set(name, value);
+            //重新设置url参数
+            window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
+            return true;
+        }
+        catch (e) {
+            console.log(e);
+            return false;
+        }
+    },
+};
+//获取上一页的url
+function getPreURL() {
+    const back = window.history.state.back;
+    if (checkNotNull(back)) {
+        return back;
+    }
+    else {
+        return document.referrer;
+    }
 }
 
 //通知权限相关
@@ -594,6 +604,7 @@ exports.clipboardPermission = clipboardPermission;
 exports.filterUniqueByProperty = filterUniqueByProperty;
 exports.formatBytes = formatBytes;
 exports.formatNumber = formatNumber;
+exports.getPreURL = getPreURL;
 exports.info = info;
 exports.localCookie = localCookie;
 exports.locationPermission = locationPermission;

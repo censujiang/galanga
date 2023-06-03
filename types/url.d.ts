@@ -6,3 +6,4 @@ export declare const url: {
     setHash(hash: string): boolean;
     setQuery(name: string, value: string): boolean;
 };
+export declare function getPreURL(): any;
