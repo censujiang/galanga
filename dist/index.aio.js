@@ -1,5 +1,5 @@
 /*!
- * galanga 0.1.9 (https://github.com/censujiang/galanga)
+ * galanga 0.2.0 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -187,8 +187,19 @@
           }
           return result[1];
       },
-      getPath() {
-          return window.location.pathname;
+      getPath(isFullPath = false) {
+          let path;
+          if (isFullPath) {
+              //获取完整路径，包括参数、hash、路径
+              path = window.location.href;
+              const origin = window.location.origin;
+              path = path.replace(origin, '');
+          }
+          else {
+              //获取路径，不包括参数、hash
+              path = window.location.pathname;
+          }
+          return path;
       },
       setPath(path) {
           try {

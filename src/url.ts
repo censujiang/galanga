@@ -15,8 +15,18 @@ export const url = {
 		}
 		return result[1];
 	},
-	getPath() {
-		return window.location.pathname;
+	getPath(isFullPath = false) {
+		let path: string;
+		if (isFullPath) {
+			//获取完整路径，包括参数、hash、路径
+			path = window.location.href;
+			const origin = window.location.origin;
+			path = path.replace(origin, '');
+		} else {
+			//获取路径，不包括参数、hash
+			path = window.location.pathname;
+		}
+		return path;
 	},
 	setPath(path: string) {
 		try {
@@ -27,7 +37,6 @@ export const url = {
 			console.log(e);
 			return false;
 		}
-
 	},
 	setHash(hash: string) {
 		try {

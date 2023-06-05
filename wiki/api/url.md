@@ -51,14 +51,18 @@ galanga.url.getHash()
 
 获取 URL 的路径，如果路径不存在，则返回 `null`。
 
+可以传入以下参数
+
+- `isFullPath` 是否返回完整路径，默认为 `false`。
+
 ::: code-group
 
 ```js [按需引入]
-url.getPath()
+url.getPath(false)
 ```
 
 ```js [全局引入]
-galanga.url.getPath()
+galanga.url.getPath(false)
 ```
 
 :::
