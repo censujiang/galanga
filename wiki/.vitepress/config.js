@@ -62,8 +62,9 @@ export default {
         { text: '对象Object', link: '/api/object' },
         { text: '数组Array', link: '/api/array' },
         { text: '权限Permission', link: '/api/permission' },
-        { text: '数字Number', link: '/api/number'},
-        { text: '时间Date', link: '/api/date'},
+        { text: '数字Number', link: '/api/number' },
+        { text: '时间Date', link: '/api/date' },
+        { text: '杂项Other', link: '/api/other' },
       ]
     },
     editLink: {

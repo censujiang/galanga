@@ -209,3 +209,129 @@ galanga.checkEmail('info@sancerain.com')
 ```
 
 :::
+
+## `encode62`和`decode62`
+
+### 介绍
+
+将数字转换为62进制的字符串，或者将62进制的字符串转换为数字。
+
+### 导入
+
+```js
+import { encode62, decode62 } from 'galanga'
+```
+
+### 使用
+
+- `encode62`：将数字转换为62进制的字符串，输入参数为数字，输出参数为字符串。
+- `decode62`：将62进制的字符串转换为数字，输入参数为字符串，输出参数为数字。
+
+::: code-group
+
+```js [按需引入]
+const str = encode62(123456789)
+const num = decode62(str)
+```
+
+```js [全局引入]
+var str = galanga.encode62(123456789)
+var num = galanga.decode62(str)
+```
+
+:::
+
+## `getFileNameFromURL`
+
+### 介绍
+
+从URL中获取文件名，如果URL不合法，则返回 `null`。
+
+### 导入
+
+```js
+import { getFileNameFromURL } from 'galanga'
+```
+
+### 使用
+
+::: code-group
+
+```js [按需引入]
+const name = getFileNameFromURL('https://www.example.com/index.html')
+```
+
+```js [全局引入]
+var name = galanga.getFileNameFromURL('https://www.example.com/index.html')
+```
+
+:::
+
+## `getFileExtFromString`
+
+### 介绍
+
+从字符串中获取文件后缀名，如果字符串不合法，则返回 `null`。
+
+### 导入
+
+```js
+import { getFileExtFromString } from 'galanga'
+```
+
+### 使用
+
+::: code-group
+
+```js [按需引入]
+const ext = getFileExtFromString('index.html')
+```
+
+```js [全局引入]
+var ext = galanga.getFileExtFromString('index.html')
+```
+
+:::
+
+## `spliceSiteTitle`
+
+### 介绍
+
+截取网站标题的函数，如果字符串不合法，则返回 `null`。
+
+### 导入
+
+```js
+import { spliceSiteTitle } from 'galanga'
+```
+
+### 使用
+
+将会传入一个Json对象，有以下内容，不传入则使用默认值：
+
+- `title`：页面标题
+- `siteName`：网站名称
+- `separator`：分隔符，默认为`-`
+- `reverse`：是否反转，默认为`false`
+
+::: code-group
+
+```js [按需引入]
+const title = spliceSiteTitle({
+  title: '山奈',
+  siteName: '山奈',
+  separator: '-',
+  reverse: false
+})
+```
+
+```js [全局引入]
+var title = galanga.spliceSiteTitle({
+  title: '山奈',
+  siteName: '山奈',
+  separator: '-',
+  reverse: false
+})
+```
+
+:::

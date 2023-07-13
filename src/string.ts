@@ -1,3 +1,5 @@
+const chars62 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 // 检查输入的值是否为空
 export function checkNull(val: any) {
   if (val === null || val === undefined || val === '' || typeof val === 'number' && isNaN(val)) {
@@ -107,4 +109,58 @@ export function checkPassword(password: string, {
 export function checkEmail(email: string) {
   const reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
   return reg.test(email)
+}
+
+//一个62进制的加密函数，将十进制数字转换为62进制字符串
+export function encode62(num: number): string {
+  let radix = chars62.length;
+  let arr: string[] = []; // specify the type of arr as string[]
+  do {
+    let mod = num % radix;
+    num = (num - mod) / radix;
+    arr.unshift(chars62[mod]);
+  } while (num);
+  return arr.join('');
+}
+
+//一个62进制的解密函数，将62进制字符串转换为十进制数字
+export function decode62(str: string | number): number {
+  if (typeof str == 'number') {
+    str = str.toString();
+  }
+  let radix = chars62.length;
+  let len = str.length;
+  let i = 0;
+  let origin = 0;
+  while (i < len) {
+    origin += Math.pow(radix, i++) * chars62.indexOf(str.charAt(len - i) || '0');
+  }
+  return Number(origin);
+}
+
+//从一个URL字符串中获取文件名
+export function getFileNameFromURL(url: string): string {
+  let arr = url.split('/');
+  return arr[arr.length - 1];
+}
+
+//从一个字符串中获取文件后缀格式
+export function getFileExtFromString(str: string): string {
+  let arr = str.split('.');
+  return arr[arr.length - 1];
+}
+
+//拼接一个站点的标题，会有一个json对象作为参数输入到此函数，对象中有四个属性，分别是标题（默认为none），站点名称（默认为Galanga），分隔符（默认为-），是否反转（默认为false）
+export function spliceSiteTitle({
+  title = 'none' as string,
+  siteName = 'Galanga' as string,
+  separator = '-' as string,
+  reverse = false as boolean
+} = {}): string {
+  separator = ' ' + separator + ' ';
+  if (reverse) {
+    return siteName + separator + title;
+  } else {
+    return title + separator + siteName;
+  }
 }

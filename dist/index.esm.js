@@ -1,5 +1,5 @@
 /*!
- * galanga 0.2.0 (https://github.com/censujiang/galanga)
+ * galanga 0.2.1 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -64,6 +64,7 @@ const localCookie = {
     }
 };
 
+const chars62 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 // 检查输入的值是否为空
 function checkNull(val) {
     if (val === null || val === undefined || val === '' || typeof val === 'number' && isNaN(val)) {
@@ -164,6 +165,51 @@ types = ['number', 'lowercase', 'uppercase', 'special'], minTypes = 2, maxTypes 
 function checkEmail(email) {
     const reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
     return reg.test(email);
+}
+//一个62进制的加密函数，将十进制数字转换为62进制字符串
+function encode62(num) {
+    let radix = chars62.length;
+    let arr = []; // specify the type of arr as string[]
+    do {
+        let mod = num % radix;
+        num = (num - mod) / radix;
+        arr.unshift(chars62[mod]);
+    } while (num);
+    return arr.join('');
+}
+//一个62进制的解密函数，将62进制字符串转换为十进制数字
+function decode62(str) {
+    if (typeof str == 'number') {
+        str = str.toString();
+    }
+    let radix = chars62.length;
+    let len = str.length;
+    let i = 0;
+    let origin = 0;
+    while (i < len) {
+        origin += Math.pow(radix, i++) * chars62.indexOf(str.charAt(len - i) || '0');
+    }
+    return Number(origin);
+}
+//从一个URL字符串中获取文件名
+function getFileNameFromURL(url) {
+    let arr = url.split('/');
+    return arr[arr.length - 1];
+}
+//从一个字符串中获取文件后缀格式
+function getFileExtFromString(str) {
+    let arr = str.split('.');
+    return arr[arr.length - 1];
+}
+//拼接一个站点的标题，会有一个json对象作为参数输入到此函数，对象中有四个属性，分别是标题（默认为none），站点名称（默认为Galanga），分隔符（默认为-），是否反转（默认为false）
+function spliceSiteTitle({ title = 'none', siteName = 'Galanga', separator = '-', reverse = false } = {}) {
+    separator = ' ' + separator + ' ';
+    if (reverse) {
+        return siteName + separator + title;
+    }
+    else {
+        return title + separator + siteName;
+    }
 }
 
 const url = {
@@ -593,6 +639,8 @@ function afterTime(time, backType = 'Date') {
     }
 }
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 //import * as packageJson from '../package.json'
 //导出自己的名字
 const info = {
@@ -602,4 +650,4 @@ const info = {
     type: 'main',
 };
 
-export { afterTime, checkDeviceType, checkEmail, checkNotNull, checkNull, checkPassword, clipboard, clipboardPermission, filterUniqueByProperty, formatBytes, formatNumber, getPreURL, info, localCookie, locationPermission, notificationPermission, shakeObject, strLength, updateObjectFromImport, url };
+export { afterTime, checkDeviceType, checkEmail, checkNotNull, checkNull, checkPassword, clipboard, clipboardPermission, decode62, encode62, filterUniqueByProperty, formatBytes, formatNumber, getFileExtFromString, getFileNameFromURL, getPreURL, info, localCookie, locationPermission, notificationPermission, shakeObject, sleep, spliceSiteTitle, strLength, updateObjectFromImport, url };
