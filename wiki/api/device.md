@@ -140,7 +140,7 @@ import { share } from 'galanga'
 - `title`：分享的标题
 - `content`：分享的内容
 - `url`：分享的链接
-- `type`：分享的类型，此值在普通版本Galanga上无含义，仅为兼容。
+- `type`：分享的类型，此值在普通版本Galanga上无含义，仅为兼容。在uniapp版本上的值对应为`weixin`、`qq`、`sinaweibo`、`system`，分别表示分享到微信、QQ、微博、系统分享。默认为`system`。
 
 ::: code-group
 
