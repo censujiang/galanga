@@ -148,7 +148,7 @@ import { share } from 'galanga'
 share({
   title: 'Hello World!',
   content: 'Hello Galanga!',
-  url: 'https://galanga.censujiang.com'\
+  url: 'https://galanga.censujiang.com'
   type: 'none'
 })
 ```
