@@ -118,3 +118,48 @@ clipboard.write('Hello World!')
 ```
 
 :::
+
+## `share`
+
+### 介绍
+
+`share`函数用于调用系统的分享功能，可以将当前页面分享到注册到系统分享功能的应用中，例如微信、QQ等。
+
+此功能需要浏览器支持，如果浏览器不支持，则会自动降级为复制当前页面的分享信息到剪切板或者弹出一个填选框弹窗。
+
+### 导入
+
+```js
+import { share } from 'galanga'
+```
+
+### 使用
+
+输入的参数为一个object，如下：
+
+- `title`：分享的标题
+- `content`：分享的内容
+- `url`：分享的链接
+- `type`：分享的类型，此值在普通版本Galanga上无含义，仅为兼容。
+
+::: code-group
+
+```js [按需引入]
+share({
+  title: 'Hello World!',
+  content: 'Hello Galanga!',
+  url: 'https://galanga.censujiang.com'\
+  type: 'none'
+})
+```
+
+```js [全局引入]
+galanga.share({
+  title: 'Hello World!',
+  content: 'Hello Galanga!',
+  url: 'https://galanga.censujiang.com'
+  type: 'none'
+})
+```
+
+:::

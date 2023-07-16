@@ -32,3 +32,35 @@ number = galanga.formatNumber(number)
 ```
 
 :::
+
+## `formatPercent`
+
+### 介绍
+
+计算百分比，并保留小数输出，例如：`0.1` => `10.0%`。
+
+### 导入
+
+```js
+import { formatPercent } from 'galanga'
+```
+
+### 使用
+
+输入的参数如下：
+
+- `numerator`[number]: 分子
+- `denominator`[number]: 分母，默认为100
+- `decimal`[number]: 保留的小数位数，默认为1
+
+::: code-group
+
+```js [按需引入]
+const percent = formatPercent(10, 100, 1)
+```
+
+```js [全局引入]
+const percent = galanga.formatPercent(10, 100, 1)
+```
+
+:::

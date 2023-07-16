@@ -10,10 +10,10 @@ export const info = {
 export { localCookie } from './cookie';
 export { url, getPreURL } from './url';
 export { checkNull, checkNotNull, strLength, formatBytes, checkPassword, checkEmail, encode62, decode62, getFileNameFromURL, getFileExtFromString, spliceSiteTitle } from './string';
-export { checkDeviceType, clipboard } from './device';
+export { checkDeviceType, clipboard, share } from './device';
 export { updateObjectFromImport, shakeObject } from './object';
 export { filterUniqueByProperty } from './array';
 export { notificationPermission, clipboardPermission, locationPermission } from './permission';
-export { formatNumber } from './number';
+export { formatNumber, formatPercent } from './number';
 export { afterTime } from './date';
 export { sleep } from './other';

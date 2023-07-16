@@ -1,5 +1,5 @@
 /*!
- * galanga 0.2.1 (https://github.com/censujiang/galanga)
+ * galanga 0.2.2 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -604,6 +604,39 @@
           return shakeObject(result, types);
       }
   }
+  function share({ content = 'none', title = 'galanga', url = '', type = 'none', //仅为兼容其他平台，无实际作用
+   } = {}) {
+      const text = title + ' ' + content + '\n' + url;
+      if (!navigator.share) {
+          clipboardShare();
+      }
+      else {
+          navigatorShare();
+      }
+      function navigatorShare() {
+          navigator.share({
+              title: title,
+              text: content,
+              url: url,
+          }).catch((error) => {
+              console.log('Not support navigator share', error);
+              clipboardShare();
+          });
+      }
+      async function clipboardShare() {
+          clipboardPermission.request();
+          const r = await clipboard.write(text);
+          if (r == true) {
+              alert("已将分享内容复制到剪切板。");
+          }
+          else {
+              promptShare();
+          }
+      }
+      function promptShare() {
+          prompt("请您复制以下内容并手动分享。", text);
+      }
+  }
 
   // 去除数组中重复的对象，将 length 大的数组保留，length 小的数组去掉
   function filterUniqueByProperty(array, prop) {
@@ -616,6 +649,13 @@
   function formatNumber(value, decimal = 2) {
       const decimalValue = Math.pow(10, decimal);
       return (Math.floor(value * decimalValue) / decimalValue).toString();
+  }
+  //计算百分比
+  //输入三个参数，分别是分子，分母，保留的小数位数（默认为1）
+  //返回百分比字符串，例如：'50.0%'
+  //保留小数位数由formatNumber函数计算得到
+  function formatPercent(numerator = 0, denominator = 100, decimal = 1) {
+      return formatNumber(numerator / denominator * 100, decimal) + '%';
   }
 
   //返回离现在多少时间后的时间
@@ -669,6 +709,7 @@
   exports.filterUniqueByProperty = filterUniqueByProperty;
   exports.formatBytes = formatBytes;
   exports.formatNumber = formatNumber;
+  exports.formatPercent = formatPercent;
   exports.getFileExtFromString = getFileExtFromString;
   exports.getFileNameFromURL = getFileNameFromURL;
   exports.getPreURL = getPreURL;
@@ -677,6 +718,7 @@
   exports.locationPermission = locationPermission;
   exports.notificationPermission = notificationPermission;
   exports.shakeObject = shakeObject;
+  exports.share = share;
   exports.sleep = sleep;
   exports.spliceSiteTitle = spliceSiteTitle;
   exports.strLength = strLength;

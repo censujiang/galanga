@@ -143,3 +143,41 @@ export function checkDeviceType(types: string[] | string = ['os', 'browser', 'de
     return shakeObject(result, types);
   }
 }
+
+export function share({
+  content = 'none',
+  title = 'galanga',
+  url = '',
+  type = 'none', //仅为兼容其他平台，无实际作用
+} = {}) {
+  const text = title + ' ' + content + '\n' + url;
+  if (!navigator.share) {
+    clipboardShare()
+  } else {
+    navigatorShare()
+  }
+
+  function navigatorShare() {
+    navigator.share({
+      title: title,
+      text: content,
+      url: url,
+    }).catch((error) => {
+      console.log('Not support navigator share', error)
+      clipboardShare()
+    });
+  }
+  async function clipboardShare() {
+    clipboardPermission.request()
+    const r = await clipboard.write(text)
+    if (r == true) {
+      alert("已将分享内容复制到剪切板。");
+    } else {
+      promptShare()
+    }
+  }
+
+  function promptShare() {
+    prompt("请您复制以下内容并手动分享。", text);
+  }
+}

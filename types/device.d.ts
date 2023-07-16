@@ -9,4 +9,10 @@ interface DeviceInfo {
     platform: string;
 }
 export declare function checkDeviceType(types?: string[] | string): DeviceInfo | string | object;
+export declare function share({ content, title, url, type, }?: {
+    content?: string;
+    title?: string;
+    url?: string;
+    type?: string;
+}): void;
 export {};
