@@ -151,7 +151,7 @@ export function checkDeviceType(types = ['os', 'browser', 'device', 'platform'])
     }
 }
 export function share({ content = 'none', title = 'galanga', url = '', type = 'none', //仅为兼容其他平台，无实际作用
- } = {}) {
+files = [], } = {}) {
     const text = title + ' ' + content + '\n' + url;
     if (!navigator.share) {
         clipboardShare();
@@ -160,12 +160,21 @@ export function share({ content = 'none', title = 'galanga', url = '', type = 'n
         navigatorShare();
     }
     function navigatorShare() {
+        if (!navigator.canShare) {
+            files = [];
+        }
+        else {
+            if (!navigator.canShare({ files })) {
+                files = [];
+            }
+        }
         navigator.share({
             title: title,
             text: content,
             url: url,
+            files: files,
         }).catch((error) => {
-            console.log('Not support navigator share', error);
+            console.warn('Not support navigator share', error);
             clipboardShare();
         });
     }

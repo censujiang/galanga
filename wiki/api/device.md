@@ -141,6 +141,7 @@ import { share } from 'galanga'
 - `content`：分享的内容
 - `url`：分享的链接
 - `type`：分享的类型，此值在普通版本Galanga上无含义，仅为兼容。在uniapp版本上的值对应为`weixin`、`qq`、`sinaweibo`、`system`，分别表示分享到微信、QQ、微博、系统分享。默认为`system`。
+- `files`：分享的文件，此值在UNIAPP版本上无含义，仅为兼容。在普通版本Galanga上的值为一个数组，数组中的每一项为一个文件对象。
 
 ::: code-group
 
@@ -150,6 +151,7 @@ share({
   content: 'Hello Galanga!',
   url: 'https://galanga.censujiang.com'
   type: 'none'
+  files: [file]
 })
 ```
 
@@ -159,6 +161,7 @@ galanga.share({
   content: 'Hello Galanga!',
   url: 'https://galanga.censujiang.com'
   type: 'none'
+  files: [file]
 })
 ```
 

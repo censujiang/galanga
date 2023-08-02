@@ -1,5 +1,5 @@
 /*!
- * galanga 0.2.2 (https://github.com/censujiang/galanga)
+ * galanga 0.2.3 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -601,7 +601,7 @@ function checkDeviceType(types = ['os', 'browser', 'device', 'platform']) {
     }
 }
 function share({ content = 'none', title = 'galanga', url = '', type = 'none', //仅为兼容其他平台，无实际作用
- } = {}) {
+files = [], } = {}) {
     const text = title + ' ' + content + '\n' + url;
     if (!navigator.share) {
         clipboardShare();
@@ -610,12 +610,21 @@ function share({ content = 'none', title = 'galanga', url = '', type = 'none', /
         navigatorShare();
     }
     function navigatorShare() {
+        if (!navigator.canShare) {
+            files = [];
+        }
+        else {
+            if (!navigator.canShare({ files })) {
+                files = [];
+            }
+        }
         navigator.share({
             title: title,
             text: content,
             url: url,
+            files: files,
         }).catch((error) => {
-            console.log('Not support navigator share', error);
+            console.warn('Not support navigator share', error);
             clipboardShare();
         });
     }
