@@ -32,3 +32,33 @@ array = galanga.filterUniqueByProperty(array, 'id')
 ```
 
 :::
+
+## `arrayFilterUniqueItem`
+
+### 介绍
+
+去除数组中完全相同的元素，然后返回新的数组。
+
+### 导入
+
+```js
+import { arrayFilterUniqueItem } from 'galanga'
+```
+
+### 使用
+
+输入的参数如下：
+
+- `array`[array]: 数组
+
+::: code-group
+
+```js [按需引入]
+array = arrayFilterUniqueItem(array)
+```
+
+```js [全局引入]
+array = galanga.arrayFilterUniqueItem(array)
+```
+
+:::
