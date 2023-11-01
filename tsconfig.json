@@ -4,11 +4,13 @@
 		"module": "esnext",
 		"noImplicitAny": false,
 		"rootDir": "./src",
-    "outDir": "./esm",
-		"strict":false,
-    "noEmitOnError":false,
+		"outDir": "./esm",
+		"strict": false,
+		"noEmitOnError": false,
 		"declaration": true,
 		"declarationDir": "./types",
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "node"
 	},
 	"include": [
 		"src//*.ts"
