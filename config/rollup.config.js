@@ -16,6 +16,7 @@ module.exports = {
         // legacy: true,
         banner: common.banner,
     },
+    external: ['moment'],
     plugins: [
         common.getCompiler({
             tsconfigOverride: { compilerOptions: { declaration: true, module: 'ES2015' } },

@@ -16,6 +16,7 @@ module.exports = {
         // legacy: true,
         banner: prod ? '' : common.banner,
     },
+    external: ['moment'],
     plugins: [
         common.getCompiler(),
         (prod && terser())
