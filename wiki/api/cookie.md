@@ -8,6 +8,12 @@
 
 `localCookie` 是一个对象，包含了一些常用的 Cookie 操作函数，包括获取、设置、删除 Cookie 等。
 
+::: details 变更说明
+
+为了方便操作，从 `v0.2.5` 开始，localCookie的部分操作逻辑将交给 `js-cookie` 来处理，因此，localCookie的部分函数的参数将会发生变化。
+
+:::
+
 ### 导入
 
 ```js
@@ -40,10 +46,7 @@ galanga.localCookie.getItem('name')
 
 - (必填)`sKey`：Cookie 名称
 - (必填)`sValue`：Cookie 值
-- `sPath`：Cookie 路径，默认为 `/`
-- `sDomain`：Cookie 域，默认为当前域
-- `vEnd`：Cookie 有效期，默认为当前会话结束
-- `bSecure`：是否只在 HTTPS 连接中有效，默认为 `false`
+- (选填)`object`: 一些可选的参数
 
 ::: code-group
 
@@ -64,8 +67,7 @@ galanga.localCookie.setItem('name', 'value')
 输入参数如下：
 
 - (必填)`sKey`：Cookie 名称
-- `sPath`：Cookie 路径，默认为 `/`
-- `sDomain`：Cookie 域，默认为当前域
+- (选填)`object`: 一些可选的参数
 
 ::: code-group
 
