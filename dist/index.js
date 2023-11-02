@@ -1,5 +1,5 @@
 /*!
- * galanga 0.2.6-fix1 (https://github.com/censujiang/galanga)
+ * galanga 0.2.6-fix2 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
  * Copyright 2014-2023 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
@@ -399,6 +399,42 @@ const cameraPermission = {
         }
     }
 };
+//麦克风权限相关
+const microphonePermission = {
+    //判断是否有麦克风权限
+    check: async () => {
+        //判断浏览器是否支持MediaDevices
+        if (!('mediaDevices' in navigator)) {
+            return false;
+        }
+        else {
+            //尝试获取麦克风信息
+            try {
+                return await defaultW3PermissionQueryCheck("microphone");
+            }
+            catch {
+                return false;
+            }
+        }
+    },
+    //请求麦克风权限
+    request: async () => {
+        let check = await microphonePermission.check();
+        if (check === null) {
+            try {
+                await navigator.mediaDevices.getUserMedia({ audio: true });
+                return true;
+            }
+            catch {
+                check = await microphonePermission.check();
+                return check === true;
+            }
+        }
+        else {
+            return check === true;
+        }
+    }
+};
 async function defaultW3PermissionQueryCheck(permissionName) {
     const info = await navigator.permissions.query({ name: permissionName });
     if (info.state === 'granted') {
@@ -727,6 +763,7 @@ exports.getPreURL = getPreURL;
 exports.info = info;
 exports.localCookie = localCookie;
 exports.locationPermission = locationPermission;
+exports.microphonePermission = microphonePermission;
 exports.notificationPermission = notificationPermission;
 exports.shakeObject = shakeObject;
 exports.share = share;

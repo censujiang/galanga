@@ -13,7 +13,7 @@ export { checkNull, checkNotNull, strLength, formatBytes, checkPassword, checkEm
 export { checkDeviceType, clipboard, share } from './device';
 export { updateObjectFromImport, shakeObject } from './object';
 export { filterUniqueByProperty, arrayFilterUniqueItem } from './array';
-export { notificationPermission, clipboardPermission, locationPermission, cameraPermission } from './permission';
+export { notificationPermission, clipboardPermission, locationPermission, cameraPermission, microphonePermission } from './permission';
 export { formatNumber, formatPercent } from './number';
 export { afterTime } from './date';
 export { sleep } from './other';
