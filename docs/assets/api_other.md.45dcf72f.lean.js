@@ -1,1 +1,0 @@
-import{_ as a,o as s,c as e,U as l}from"./chunks/framework.fd4dbc48.js";const u=JSON.parse('{"title":"Other","description":"","frontmatter":{},"headers":[],"relativePath":"api/other.md","lastUpdated":1689240258000}'),n={name:"api/other.md"},o=l("",10),t=[o];function p(c,r,i,d,h,y){return s(),e("div",null,t)}const _=a(n,[["render",p]]);export{u as __pageData,_ as default};
