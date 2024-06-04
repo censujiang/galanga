@@ -115,6 +115,38 @@ galanga.url.setPath('galanga')
 
 :::
 
+#### 删除URL的参数
+
+删除 URL 上指定名称的参数。操作成功返回 `true`，否则返回 `false`。
+
+::: code-group
+
+```js [按需引入]
+url.removeQuery('name')
+```
+
+```js [全局引入]
+galanga.url.removeQuery('name')
+```
+
+:::
+
+#### 删除URL的hash
+
+删除 URL 上的 hash。操作成功返回 `true`，否则返回 `false`。
+
+::: code-group
+
+```js [按需引入]
+url.removeHash()
+```
+
+```js [全局引入]
+galanga.url.removeHash()
+```
+
+:::
+
 
 ## `getPreURL`
 

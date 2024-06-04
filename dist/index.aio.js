@@ -1,7 +1,7 @@
 /*!
- * galanga 0.2.6-fix2 (https://github.com/censujiang/galanga)
+ * galanga 0.2.7 (https://github.com/censujiang/galanga)
  * API https://galanga.censujiang.com/api/
- * Copyright 2014-2023 censujiang. All Rights Reserved
+ * Copyright 2014-2024 censujiang. All Rights Reserved
  * Licensed under Apache License 2.0 (https://github.com/censujiang/galanga/blob/master/LICENSE)
  */
 
@@ -376,6 +376,31 @@
               return false;
           }
       },
+      removeQuery(name) {
+          try {
+              //首先获取当前url参数
+              const params = new URLSearchParams(window.location.search);
+              //删除指定参数
+              params.delete(name);
+              //重新设置url参数
+              window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
+              return true;
+          }
+          catch (e) {
+              console.log(e);
+              return false;
+          }
+      },
+      removeHash() {
+          try {
+              window.location.hash = '';
+              return true;
+          }
+          catch (e) {
+              console.log(e);
+              return false;
+          }
+      }
   };
   //获取上一页的url
   function getPreURL() {

@@ -64,6 +64,31 @@ export const url = {
             return false;
         }
     },
+    removeQuery(name) {
+        try {
+            //首先获取当前url参数
+            const params = new URLSearchParams(window.location.search);
+            //删除指定参数
+            params.delete(name);
+            //重新设置url参数
+            window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
+            return true;
+        }
+        catch (e) {
+            console.log(e);
+            return false;
+        }
+    },
+    removeHash() {
+        try {
+            window.location.hash = '';
+            return true;
+        }
+        catch (e) {
+            console.log(e);
+            return false;
+        }
+    }
 };
 //获取上一页的url
 export function getPreURL() {

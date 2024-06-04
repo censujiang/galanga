@@ -5,5 +5,7 @@ export declare const url: {
     setPath(path: string): boolean;
     setHash(hash: string): boolean;
     setQuery(name: string, value: string): boolean;
+    removeQuery(name: string): boolean;
+    removeHash(): boolean;
 };
 export declare function getPreURL(): any;
